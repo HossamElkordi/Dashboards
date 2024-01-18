@@ -1,0 +1,32 @@
+.lifestyle-div {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.table {
+  flex: 1 1 0;
+  min-height: 0;
+  max-width: 60%;
+  min-width: 54%;
+}
+
+.cards-div {
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+::ng-deep .lifestyle-div app-card .card-container {
+  margin: 10px !important;
+  padding: 10px !important;
+}
+
+::ng-deep .lifestyle-div .mat-mdc-header-cell {
+  padding: 0 2px;
+}
+
+::ng-deep .lifestyle-div .mat-mdc-cell {
+  padding: 0 2px;
+}

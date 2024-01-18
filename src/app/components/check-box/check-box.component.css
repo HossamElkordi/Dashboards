@@ -1,0 +1,10 @@
+.list-item{
+    list-style-type: none;
+    background-color: transparent;
+    height: 35px
+}
+
+.list{
+    padding-left: 3px;
+    height: 100%;
+}

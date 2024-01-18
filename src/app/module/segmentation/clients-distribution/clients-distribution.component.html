@@ -1,0 +1,18 @@
+<div class="clients-distribution-div">
+    <div class="filters-and-table-div">
+        <app-dropdown [multiple]="true" label="State" [options]="dropdownFilters.state"
+            (selectionChange)="setFilters({'State': $event})"></app-dropdown>
+        <app-table class="table" [columns]="columns" [dataSource]="tableData" [filterValues]="tableFilters"
+            (filterClients)="setFilters($event)" [(selectedRow)]="selectedClient"
+            (selectedRowChange)="selectClient()"></app-table>
+    </div>
+    <div class="charts-div">
+        <div class="chart" *ngFor="let chart of displayedCharts">
+            <app-geographic-map *ngIf="filteredData$ | async; else emptyMap" [title]="chartsInfo[chart].title"
+                [data]="chartsInfo[chart].data"></app-geographic-map>
+            <ng-template #emptyMap>
+                <app-geographic-map [title]="chartsInfo[chart].title"></app-geographic-map>
+            </ng-template>
+        </div>
+    </div>
+</div>

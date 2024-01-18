@@ -1,0 +1,87 @@
+.toolbar-spacer1 {
+    flex: 0.75 0.75 auto;
+}
+
+.toolbar-spacer2 {
+    flex: 1 1 auto;
+}
+
+.mat-toolbar.toolbar {
+    height: 7vh;
+    background-color: var(--blue);
+    display: flex;
+}
+
+.menu-btn {
+    max-width: 15%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.logo {
+    width: 40%;
+    margin-left: 1%;
+}
+
+.drawer-container {
+    background-color: var(--white);
+    height: 93vh;
+}
+
+.sidenav {
+    background-color: var(--blue);
+}
+
+.mat-mdc-button.prod-btn {
+    min-width: 100%;
+    width: 100%;
+    min-height: 8%;
+    justify-content: flex-start;
+}
+
+.mat-mdc-button.prod-btn:hover {
+    min-width: 100%;
+    width: 100%;
+    min-height: 8%;
+    justify-content: flex-start;
+    background-color: var(--cyan);
+    color: var(--blue);
+    border-radius: 0px;
+}
+
+.mat-mdc-button.prod-selected-btn {
+    min-width: 100%;
+    width: 100%;
+    min-height: 8%;
+    justify-content: flex-start;
+    background-color: var(--cyan);
+    color: var(--blue);
+    border-radius: 0px;
+}
+
+.mat-expansion-panel-header{
+    background-color: var(--blue) !important;
+    padding: 7px !important;
+}
+
+:host ::ng-deep  .mat-expansion-panel-body{
+    background-color: var(--blue) !important;
+} 
+
+:host ::ng-deep .mat-expansion-panel-header:hover {
+    background-color: var(--cyan) !important;
+}
+
+.asset-button{
+    width: 100%;
+}
+
+.asset-button:hover{
+    background-color: var(--cyan);
+    color: var(--blue);
+}
+
+.asset-icon{
+    padding-right: 2px;
+}

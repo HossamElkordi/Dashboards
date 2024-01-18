@@ -1,0 +1,11 @@
+<div class="slider-container" [class.dark-theme]="isDarkTheme">
+    <label class="header-label" [style.color]="isDarkTheme ? 'var(--white)' : ''">{{title}}</label>
+    <mat-slider class="slicer-style" min={{min}} max={{max}} step={{step}}>
+        <input matSliderThumb [(ngModel)]="value" (change)="onChangeValue()">
+    </mat-slider>
+    <div class="values-container">
+        <!-- <label class="vals-label boundary-label">{{min}}</label> -->
+        <label class="vals-label" [style.color]="isDarkTheme ? 'var(--white)' : ''">{{value}}</label>
+        <!-- <label class="vals-label boundary-label">{{max}}</label> -->
+    </div>
+</div>

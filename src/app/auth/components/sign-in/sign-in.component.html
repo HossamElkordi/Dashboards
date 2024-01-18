@@ -1,0 +1,30 @@
+<app-header title="Enterprise Risk Management"></app-header>
+<div class="sign-in-div">
+    <app-card class="card">
+        <h1 class="title">Sign In</h1>
+        <form class="form" ngNativeValidate (submit)="signIn()">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input required type="email" matInput [(ngModel)]="email" name="email">
+            </mat-form-field>
+            <mat-form-field appearance="outline" color="primary">
+                <mat-label>Password</mat-label>
+                <input required [type]="isPasswordVisible ? 'text' : 'password' " minlength="6" matInput autocomplete
+                    [(ngModel)]="password" name="password">
+                <button matSuffix type="button" mat-icon-button (click)="toggleVisibility()">
+                    <mat-icon *ngIf="!isPasswordVisible">visibility</mat-icon>
+                    <mat-icon *ngIf="isPasswordVisible">visibility_off</mat-icon>
+                </button>
+            </mat-form-field>
+            <p class="error" *ngIf="error">{{errorMessage}}</p>
+            <div class="action-div">
+                <button mat-raised-button color="primary" type="submit">Sign In</button>
+                <span class="forget-pwd underline" (click)="navToForgetPwd()">Forgot Password?</span>
+            </div>
+        </form>
+        <div class="create-account-div">
+            <span>Don't have an account?</span>
+            <span (click)="navToSignUp()" class="create-account underline"> Create an account</span>
+        </div>
+    </app-card>
+</div>

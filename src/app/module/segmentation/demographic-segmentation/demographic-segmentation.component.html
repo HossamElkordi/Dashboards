@@ -1,0 +1,43 @@
+<div class="demographic-segmentation-div">
+    <div class="filters-and-table-container">
+        <div class="filters-container">
+            <app-dropdown #eduDropdown [multiple]="true" label="Education Level"
+                (selectionChange)="applyFilters({Education_Level: $event})"></app-dropdown>
+            <app-dropdown #kidsCountDropdown [multiple]="true" label="Number of Kids"
+                (selectionChange)="applyFilters({Num_Of_Kids: $event})"></app-dropdown>
+            <app-dropdown #stateDropdown id="state-dropdown" [multiple]="true" label="State"
+                (selectionChange)="applyFilters({State: $event})"></app-dropdown>
+        </div>
+        <app-table *ngIf="tableData; else emptyTable" [columns]="columns" [dataSource]="tableData"
+            [filterValues]="filterValues" (filterClients)="applyFilters($event)" [(selectedRow)]="selectedClient"
+            (selectedRowChange)="selectClient()"></app-table>
+    </div>
+    <div class="charts-container">
+        <div class="chart" *ngFor="let chart of displayedCharts">
+            <div class="bar-chart" *ngIf="chartsInfo[chart].type === 'bar'">
+                <app-bar-chart *ngIf="filteredData$ | async; else emptyBar" [chartLabels]="chartsInfo[chart].labels"
+                    [chartSeries]="[{name: chart, data: chartsInfo[chart].data}]" [chartTitle]="chartsInfo[chart].title"
+                    chartWidth="100%" chartHeight="100%"></app-bar-chart>
+                <ng-template #emptyBar>
+                    <app-bar-chart *ngIf="chartsInfo[chart].type === 'bar'" [chartTitle]="chartsInfo[chart].title"
+                        chartWidth="100%" chartHeight="100%"></app-bar-chart>
+                </ng-template>
+            </div>
+            <div class="pie-chart" *ngIf="chartsInfo[chart].type === 'pie'">
+                <app-pie-chart *ngIf="filteredData$ | async; else emptyPie" [labels]="chartsInfo[chart].labels"
+                    [series]="chartsInfo[chart].data" [title]="chartsInfo[chart].title" [width]="350"></app-pie-chart>
+                <ng-template #emptyPie>
+                    <app-pie-chart *ngIf="chartsInfo[chart].type === 'pie'"
+                        [title]="chartsInfo[chart].title"></app-pie-chart>
+                </ng-template>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<ng-template #emptyTable>
+    <app-table [columns]="columns"></app-table>
+</ng-template>

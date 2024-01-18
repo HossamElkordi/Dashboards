@@ -1,0 +1,83 @@
+.card{
+    background: var(--white);
+    border-radius: 4px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card.dark-theme {
+    background: var(--black-foreground);
+}
+
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.slicers{
+    display: flex;
+    padding: 2% 1% 1% 1%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-label{
+    color: black; 
+    font-weight: normal;
+    font-size: large;
+}
+
+.card.dark-theme .header-label{
+    color: white;
+}
+
+::ng-deep.mat-typography p {
+    margin: 0 0 0px;
+}
+
+.toolbar-spacer {
+    flex: 1 1 auto;
+}
+
+.slicer-style{
+    min-width: 65%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 1%;
+}
+
+.mat-mdc-slider {
+    --mdc-slider-handle-color: var(--cyan);
+    --mdc-slider-focus-handle-color: var(--cyan);
+    --mdc-slider-hover-handle-color: var(--cyan);
+    --mdc-slider-active-track-color: var(--cyan);
+    --mdc-slider-inactive-track-color: var(--cyan);
+    --mdc-slider-with-tick-marks-active-container-color: var(--cyan);
+    --mdc-slider-with-tick-marks-inactive-container-color: var(--cyan);
+    --mat-mdc-slider-ripple-color: var(--cyan);
+    --mat-mdc-slider-hover-ripple-color: var(--cyan);
+    --mat-mdc-slider-focus-ripple-color: var(--cyan);
+    --mdc-slider-label-label-text-color: white;
+    --mdc-slider-label-container-color: var(--grey);
+}
+
+.card.dark-theme .mat-mdc-slider{
+    --mdc-slider-handle-color: var(--orange);
+    --mdc-slider-focus-handle-color: var(--orange);
+    --mdc-slider-hover-handle-color: var(--orange);
+    --mdc-slider-active-track-color: var(--orange);
+    --mdc-slider-inactive-track-color: var(--orange);
+    --mdc-slider-with-tick-marks-active-container-color: var(--orange);
+    --mdc-slider-with-tick-marks-inactive-container-color: var(--orange);
+    --mat-mdc-slider-ripple-color: var(--orange);
+    --mat-mdc-slider-hover-ripple-color: var(--orange);
+    --mat-mdc-slider-focus-ripple-color: var(--orange);
+    --mdc-slider-label-label-text-color: white;
+    --mdc-slider-label-container-color: var(--grey);
+}
+
+::ng-deep.mdc-slider .mdc-slider__value-indicator {
+    transform: none !important;
+    opacity: 1 !important;
+}
+

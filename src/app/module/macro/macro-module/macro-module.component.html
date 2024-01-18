@@ -1,0 +1,45 @@
+<div class="page">
+    <!-- selector -->
+    <div class="menu">
+        <mat-slide-toggle [(ngModel)]="combined_charts" class="charts-toggle">
+            Combine Charts
+        </mat-slide-toggle>
+        <mat-divider class="menu-div"></mat-divider>
+        <div class="menu-content">
+            <mat-accordion>
+                <mat-expansion-panel (opened)="macroState = true" (closed)="macroState = false">
+                    <mat-expansion-panel-header class="exp-panel">
+                        <mat-panel-title class="panel-text">Macro-Economics</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    
+                    <app-check-box #macro_checkbox class="check" (items_event)="onSelectionChange($event)"></app-check-box>
+                    
+                </mat-expansion-panel>
+            </mat-accordion>
+
+            <mat-divider class="menu-div"></mat-divider>
+
+            <mat-accordion>
+                <mat-expansion-panel (opened)="constState = true" (closed)="constState = false">
+                    <mat-expansion-panel-header class="exp-panel">
+                        <mat-panel-title class="panel-text">Construction Materials</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    
+                    <app-check-box #const_checkbox class="check" (items_event)="onSelectionChange($event)"></app-check-box>
+
+                </mat-expansion-panel>
+            </mat-accordion>
+
+            <mat-divider class="menu-div"></mat-divider>
+        </div>
+    </div>
+
+    <!-- shown figures -->
+    <div class="content">
+        <div *ngFor="let item of (!combined_charts) ? selected_list : ['']" class="ind-frame">
+            <app-time-series *ngIf="!combined_charts" [var_name]="item" [init_start_date]="y_charts_init_start_date" [init_end_date]="y_charts_init_end_date"></app-time-series>
+            <app-time-series #combined_ts *ngIf="combined_charts" [vars]="selected_list" [init_start_date]="y_charts_init_start_date" [init_end_date]="y_charts_init_end_date"></app-time-series>
+            <mat-divider *ngIf="!combined_charts" class="page-div"></mat-divider>
+        </div>
+    </div>
+</div>

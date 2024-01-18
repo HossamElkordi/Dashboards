@@ -1,0 +1,57 @@
+<p *ngIf="this.var_name !== undefined" class="title">{{name2title[this.var_name]}}</p>
+<app-date-slicer #slicer *ngIf="this.var_name !== undefined || (this.vars !== undefined && this.vars.length > 0)" 
+    [min_val]="min_date" [max_val]="max_date" (curDateRange)="onDateRangeChange($event)"></app-date-slicer>
+<app-area-chart #chart (zoom)="onZoom($event)" *ngIf="this.var_name !== undefined || (this.vars !== undefined && this.vars.length > 0)"></app-area-chart>
+
+<div class="selections">
+
+    <button mat-button class="menu-btn"
+        *ngIf="(this.var_name !== undefined && vars_apis[0].freq == 'Y') || (this.vars !== undefined && this.vars.length > 0)"
+        [matMenuTriggerFor]="yearSelection">
+        <div class="menu-div">
+            <label class="menu-lbl">Select a Year</label>
+            <label class="menu-lbl">{{selectedYear}}</label>
+        </div>
+        <mat-icon class="menu-arrow">arrow_drop_down</mat-icon>
+    </button>
+
+    <button mat-button class="menu-btn"
+        *ngIf="this.var_name !== undefined && vars_apis[0].freq == 'M'"
+        [matMenuTriggerFor]="yearSelection">
+        <div class="menu-div">
+            <label class="menu-lbl">Select a Date</label>
+            <label class="menu-lbl">{{selectedDate}}</label>
+        </div>
+        <mat-icon class="menu-arrow">arrow_drop_down</mat-icon>
+    </button>
+
+    <mat-slide-toggle *ngIf="this.var_name !== undefined"
+        [(ngModel)]="genai" (change)="onGenAIToggleChange($event)" class="genai-toggle">
+        <mat-icon svgIcon="google"></mat-icon>
+    </mat-slide-toggle>
+
+</div>
+
+<mat-menu #yearSelection="matMenu" class="inner-menu">
+    <button mat-menu-item *ngFor="let year of year_list" (click)="onYearSelect(year)" (menuOpened)="onYearSelect(year)" 
+    [matMenuTriggerFor]="(this.var_name !== undefined && vars_apis[0].freq == 'M') ? years: null">{{ year }}</button>
+</mat-menu>
+
+<mat-menu #years="matMenu" class="inner-menu">
+    <button mat-menu-item [matMenuTriggerFor]="quarter">Quarters</button>
+    <button mat-menu-item [matMenuTriggerFor]="month">Months</button>
+</mat-menu>
+
+<mat-menu #quarter="matMenu" class="inner-menu">
+    <button mat-menu-item *ngFor="let q of quarter_list" (click)="onQuarterSelect(q)">{{ q.quarter }}</button>
+</mat-menu>
+
+<mat-menu #month="matMenu" class="inner-menu">
+    <button mat-menu-item *ngFor="let m of month_list" (click)="onMonthSelect(m.monthi)">{{ m.month }}</button>
+</mat-menu>
+
+<div class="cards">
+    <app-card [Height]="'fit-content'" [information]="this.cur_card_info" *ngIf="(this.var_name !== undefined || (this.vars !== undefined && this.vars.length > 0)) && this.show_cards"></app-card>
+    <app-card [Height]="'fit-content'" [information]="this.prev_card_info" *ngIf="(this.var_name !== undefined || (this.vars !== undefined && this.vars.length > 0)) && this.show_cards"></app-card>
+    <app-card [Height]="'fit-content'" [information]="this.now_card_info" *ngIf="(this.var_name !== undefined || (this.vars !== undefined && this.vars.length > 0)) && this.show_cards"></app-card>
+</div>

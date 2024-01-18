@@ -1,0 +1,11 @@
+<app-header class="header" title="Enterprise Risk Management"></app-header>
+<div class="selector-page">
+    <div class="tile" *ngFor="let tile of tiles_title">
+        <div class="tile-container {{tile}}" (click)="onProductClick(tile)">
+            <div class="tile-content">
+                <p class="tile-title">{{tiles2title[tile]}}</p>
+                <p class="tile-text">{{tiles_title2desc[tile]}}</p>
+            </div>
+        </div>
+    </div>
+</div>

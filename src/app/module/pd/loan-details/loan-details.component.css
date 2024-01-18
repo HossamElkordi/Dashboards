@@ -1,0 +1,126 @@
+.loan-details-div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 20px 0px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.card-container {
+  align-items: center;
+  gap: 75px;
+  background-color: #ffffff;
+  padding: 7px 10px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  width: auto;
+  margin: 0px;
+  transition: transform 0.2s, box-shadow 0.2s; /* For hover effect */
+}
+
+.card-container h2 {
+  font-size: 1.6em;
+  color: var(--blue); /* Darker color for better contrast */
+  font-weight: 600; /* Semi-bold title */
+  text-align: center;
+}
+
+.sliders {
+  flex-grow: 1;
+  gap: 10px;
+}
+
+.more-info-card-container {
+  padding: 7px 100px;
+}
+
+.card {
+  flex-grow: 1;
+}
+
+.column-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-name {
+  margin-right: 30px;
+  color: #000000; /* Slightly darker color */
+  font-weight: bold; /* Semi-bold text */
+  text-wrap: balance;
+  text-align: left;
+}
+
+.info-value {
+  color: #000000; /* Default color */
+  font-weight: 400; /* Regular text */
+  text-wrap: balance;
+  text-align: right;
+}
+
+.button-group {
+  gap: 10px;
+}
+
+.btn {
+  font-size: small;
+  height: max-content;
+}
+
+app-slider {
+  width: 100%;
+}
+
+::ng-deep #roc-slider .header-label {
+  margin-right: 43px;
+}
+
+::ng-deep .button-group .mat-mdc-raised-button[disabled][disabled] {
+  --mdc-protected-button-disabled-container-color: var(--grey);
+  --mdc-protected-button-disabled-label-text-color: var(--white);
+}
+
+::ng-deep .button-group .mat-mdc-raised-button {
+  --mdc-protected-button-container-color: var(--blue);
+  --mdc-protected-button-label-text-color: var(--white);
+}
+
+::ng-deep .loan-details-div .card-container h2 {
+  margin: 0 !important;
+}
+
+::ng-deep .loan-details-div .info-name {
+  text-wrap: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
+::ng-deep .loan-details-div .info-value {
+  text-wrap: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
+::ng-deep .loan-details-div .two-cards-container .card-container {
+  margin: 0 !important;
+  padding: 10px 20px !important;
+  height: 100% !important;
+  box-sizing: border-box;
+}
+
+.chart {
+  width: 50%;
+}
+
+::ng-deep .container-2 svg {
+  width: 100% !important;
+}
+
+app-area-chart {
+  display: block;
+}

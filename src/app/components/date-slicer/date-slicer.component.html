@@ -1,0 +1,19 @@
+<div class="container date">
+    <mat-form-field color='accent'>
+        <mat-label class="lbl">Choose start date</mat-label>
+        <input class="inp" matInput [min]="min_val" [max]="cur_max" [(ngModel)]="cur_min"
+            (dateChange)="changeDateRanges()" [matDatepicker]="picker">
+        <mat-hint class="hint">MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field style="margin-left: 5%;" color='accent'>
+        <mat-label class="lbl">Choose end date</mat-label>
+        <input class="inp" matInput [min]="cur_min" [max]="max_val" [(ngModel)]="cur_max"
+            (dateChange)="changeDateRanges()" [matDatepicker]="picker1">
+        <mat-hint class="hint">MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+</div>

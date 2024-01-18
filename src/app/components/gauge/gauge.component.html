@@ -1,0 +1,15 @@
+<div class="gauge-container" [class.dark-theme]="isDarkTheme">
+    <ngx-gauge 
+        [cap]="cap" 
+        [type]="gaugeType" 
+        [value]="gaugeValue" 
+        [min]="min" 
+        [max]="max" 
+        [thresholds]="generateGradient()"
+        [thick]="thickness" 
+        [duration]="200" 
+        [size]="size" 
+        [append]="append" 
+        [label]="label">
+    </ngx-gauge>
+  </div>

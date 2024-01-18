@@ -1,0 +1,97 @@
+<div class="body" [class.dark-theme]="isDarkTheme">
+    <mat-drawer-container class="drawer-container" autosize >
+        <mat-drawer [(opened)]="is_right_div_visible" class="drawer client-details-drawer" mode="over" position="end" >
+            <div class="right-sliding-div" [style.backgroundColor]="isDarkTheme ? 'var(--black-background)' : ''" >
+                <div class="chart-1">
+                    <div style="width: 80%; margin: auto; margin-bottom: 3vh;">
+                        <app-slider [min]=1 [max]=15 [title]="'Min Variables'" (changeValue)="update_bar1_chart($event, 'min')" [step]=1></app-slider>
+                    </div>
+                    <app-bar-chart [chartLabels]="bar1_labels" [chartSeries]="bar1_chart_data" [chartTitle]="selected_subset_title" [chartHeight]="chart_height"
+                        [chartWidth]="350" *ngIf="shouldRender"></app-bar-chart>
+                </div>
+
+                <div class="chart-2">
+                    <div style="width: 80%; margin: auto; margin-bottom: 3vh;">
+                        <app-slider [min]=1 [max]=15 [title]="'Max Variables'" (changeValue)="update_bar1_chart($event, 'max')" [step]=1></app-slider>
+                    </div>
+                    <app-bar-chart [chartLabels]="bar2_labels" [chartSeries]="bar2_chart_data" [chartHeight]="chart_height" [chartTitle]="'Types'" 
+                    [chartWidth]="350" *ngIf="shouldRender"></app-bar-chart>
+                </div>
+
+                <div class="chart-buttons">
+                    <button mat-raised-button class="sec-button" *ngIf="this.ACTIVE"
+                        (click)="onclick_ACTIVE_button()">ACTIVE</button>
+                    <button mat-raised-button class="sec-button" *ngIf="this.APP"
+                        (click)="onclick_APP_button()">APP</button>
+                    <button mat-raised-button class="sec-button" *ngIf="this.BUR"
+                        (click)="onclick_BUR_button()">BUR</button>
+                    <button mat-raised-button class="sec-button" *ngIf="this.CCB"
+                        (click)="onclick_CCB_button()">CCB</button>
+                    <button mat-raised-button class="sec-button" *ngIf="this.INS"
+                        (click)="onclick_INS_button()">INS</button>
+                    <button mat-raised-button class="sec-button" *ngIf="this.PREV"
+                        (click)="onclick_PREV_button()">PREV</button>
+                </div>
+            </div>
+        </mat-drawer>
+
+        <mat-drawer-content>
+            <div class="top-sliding-div" [@topSlideInOut]="is_top_div_visible ? 'in' : 'out'" [style.backgroundColor]="isDarkTheme ? 'var(--black-background)' : ''">
+                <app-dropdown [multiple]="true" [label]="'Occupation'" [options]="Occupation_Type_items"
+                    [selected]="selectedItem_Occupation_Type"
+                    (selectionChange)="filter_Occupation_Type($event)"></app-dropdown>
+                <app-dropdown [multiple]="true" [label]="'Family Status'" [options]="Family_Status_items"
+                    [selected]="selectedItem_Family_Status"
+                    (selectionChange)="filter_Family_Status($event)"></app-dropdown>
+                <app-dropdown [multiple]="true" [label]="'House Type'" [options]="House_Type_items"
+                    [selected]="selectedItem_House_Type" (selectionChange)="filter_House($event)"></app-dropdown>
+                <app-dropdown [multiple]="true" [label]="'Education'" [options]="Education_Level_items"
+                    [selected]="selectedItem_Education_Level"
+                    (selectionChange)="filter_Education($event)"></app-dropdown>
+                <app-dropdown [multiple]="true" [label]="'Gender'" [options]="Gender_items"
+                    [selected]="selectedItem_Gender" (selectionChange)="filter_Gender($event)"></app-dropdown>
+                <button mat-raised-button class="reset-button" (click)="reset_filters()">Reset</button>
+
+                <app-num-slicer [slicers]="init_slicers1" (selection)="filter_1($event)"></app-num-slicer>
+                <app-num-slicer [slicers]="init_slicers2" (selection)="filter_2($event)"></app-num-slicer>
+            </div>
+
+            <mat-grid-list cols="7" rows="6" rowHeight="16.8%" gutterSize="0px" [style.backgroundColor]="isDarkTheme ? 'var(--black-background)' : ''" [style.color]="isDarkTheme ? 'var(--black-background)' : ''">
+                <mat-grid-tile [colspan]="tiles[0].cols" [rowspan]="tiles[0].rows" [style.background]="tiles[0].color" [style.backgroundColor]="isDarkTheme ? 'var(--black-background)' : ''" [style.color]="isDarkTheme ? '#ffffff' : ''">
+                    <app-table [dataSource]="table_data" [columns]="table_cols_names" style="height: 100%; width: 100%;" (selectedRowChange)="select_id($event)"></app-table>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="tiles[1].cols" [rowspan]="tiles[1].rows" [style.background]="tiles[1].color" [style.backgroundColor]="isDarkTheme ? 'var(--black-background)' : ''" [style.color]="isDarkTheme ? '#ffffff' : ''">
+                    <div class="tile-container">
+                        <app-card [title]="'Historical Details'" [information]="historical_details"></app-card>
+                    </div>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="tiles[2].cols" [rowspan]="tiles[2].rows" [style.background]="tiles[2].color" [style.backgroundColor]="isDarkTheme ? 'var(--black-background)' : ''" [style.color]="isDarkTheme ? '#ffffff' : ''">
+                    <div class="tile-container">
+                        <app-gauge *ngIf="!is_top_div_visible" [size]="180" [gaugeValue]="gauge_value" [min]=0 [max]=100
+                            [append]="gauge_append" [label]="gauge_label"></app-gauge>
+                        <app-gauge *ngIf="is_top_div_visible && !filters_error" [size]="180"
+                            [gaugeValue]="gauge_average_risk" [min]=0 [max]=100 [append]="gauge_append"
+                            [label]="gauge_label"></app-gauge>
+                        <h2 *ngIf="filters_error" style="color: red; text-align: center;">Select suitable values for the filters</h2>
+                    </div>
+                </mat-grid-tile>
+
+                <mat-grid-tile [style.backgroundColor]="isDarkTheme ? 'var(--black-background)' : ''" [style.color]="isDarkTheme ? '#ffffff' : ''">
+                    <div class="tile-container toggle-buttons">
+                        <button mat-raised-button class="special-button" (click)="toggle_top_div()">Advanced Analysis</button>
+                        <button mat-raised-button class="special-button" (click)="toggle_right_div()" [disabled]="interpret_button_disabled">Interpret Risk</button>
+                    </div>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="tiles[4].cols" [rowspan]="tiles[4].rows" [style.background]="tiles[4].color" [style.backgroundColor]="isDarkTheme ? 'var(--black-background)' : ''" [style.color]="isDarkTheme ? '#ffffff' : ''">
+                    <div class="tile-container" >
+                        <app-card [title]="'Client Details'" [information]='client_details'></app-card>
+                    </div>
+                </mat-grid-tile>
+            </mat-grid-list>
+            
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

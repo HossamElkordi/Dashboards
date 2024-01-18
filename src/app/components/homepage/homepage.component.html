@@ -1,0 +1,20 @@
+<app-header title="Enterprise Risk Management"></app-header>
+<div class="page">
+    <div class="homepage">
+        <h1 class="title">Enterprise Risk <br>Management</h1>
+
+        <h3 class="text">Identify, assess, and mitigate risks across your entire organization in order to achieve your
+            strategic objectives.</h3>
+        <h3 class="text">Our ERM solution can help your organization to:</h3>
+        <ul>
+            <li class="text">Reduce the likelihood of losses</li>
+            <li class="text">Increase the likelihood of success</li>
+            <li class="text">Improve compliance with regulations</li>
+            <li class="text">Reduce costs</li>
+            <li class="text">Enhance decision-making</li>
+            <li class="text">Improve customer satisfaction</li>
+        </ul>
+    </div>
+    <img src="../../../assets/home.png" [width]="626" [height]="400" class="image">
+</div>
+<button mat-raised-button class="prods-btn" (click)="onBtnClick()" *ngIf="isLoggedIn">Products</button>

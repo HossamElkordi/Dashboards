@@ -1,0 +1,149 @@
+.body {
+    height: 91vh;
+    padding: 5px;
+}
+
+app-num-slicer {
+    width: 50vw;
+    margin: auto;
+    margin-top: 0px;
+    height: 100% !important;
+    width: 100%;
+}
+
+app-date-slicer {
+    width: 27vw !important;
+    display: inline-block !important;
+    margin-left: 2vw;
+}
+
+:host ::ng-deep .dropdown {
+    padding: 5px;
+    width: 12vw !important;
+    margin: auto;
+    margin-left: 1vw;
+}
+
+:host ::ng-deep div.reading-block {
+    font-size: 1rem;
+}
+
+/* mat-grid-tile {
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+} */
+
+.filters-container {
+    height: 98%;
+    width: 98%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    grid-template-areas:
+        "num date"
+        "num cat";
+}
+
+.predict_filters-container {
+    height: 98%;
+    width: 98%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "num cat"
+        "num cat";
+}
+
+.num-filters {
+    grid-area: num;
+    margin-top: 5vh;
+}
+
+.date-filters {
+    grid-area: date;
+}
+
+.cat-filters {
+    grid-area: cat;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 1vw;
+}
+
+/* .dim-overlay {
+    position: fixed;
+    top: 7vh;
+    left: 0;
+    width: 39vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    pointer-events: none; 
+    display: flex;
+} */
+/* 
+mat-icon {
+    font-size: 1.6rem !important;
+    font-weight: bold !important;
+} */
+
+/* .close-button {
+    position: fixed;
+    left: 0;
+    bottom: 7vh;
+    color: var(--blue);
+    border-radius: 0px;
+} */
+
+.asset-sliding-div {
+    position: fixed;
+    top: 6.1vh;
+    margin-top: 0px;
+    right: 0;
+    width: 60vw;
+    height: 92vh;
+    background-color: white;
+    z-index: 100;
+    color: black;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "asset-card asset-card"
+        "area-chart area-chart";
+    margin: 5px;
+    align-items: self-start;
+}
+
+.asset-card {
+    grid-area: asset-card;
+    margin: 5px;
+}
+
+.asset-area-chart-container {
+    grid-area: area-chart;
+    margin: 5px;
+}
+
+.drawer-container {
+    background-color: var(--white);
+    height: 92vh;
+}
+
+.drawer {
+    background-color: var(--white);
+}
+
+.client-details-drawer {
+    width: 60vw;
+}
+
+mat-drawer-content {
+    display: inline;
+}

@@ -1,0 +1,41 @@
+<app-progress-spinner *ngIf="!display" [typeVal]="'bar'" [modeVal]="1"></app-progress-spinner>
+
+<div class="body" *ngIf="display">
+
+    <div class="row1">
+        <app-card *ngIf="user_info" 
+            [Height]="'fit-content'" [Width]="'fit-content'" 
+            [title]="'Customer Information'" 
+            [twoColumns]="true"  
+            [information]="this.user_info">
+        </app-card>
+    </div>
+
+    <div class="row2">
+        <app-bar-chart *ngIf="products_prob" class="chart"
+            [chartWidth]="350" [chartHeight]="280"
+            [chartTitle]="'Subscription Probability By Product'"
+            [xaxis]="{type: 'category', labels: {style:{colors: '#044492', fontSize: '8', fontWeight: 'bold'}}}"
+            [chartLabels]="products" 
+            [chartSeries]="products_prob">
+        </app-bar-chart>
+
+        <app-bar-chart *ngIf="exp_gain_impact" class="chart"
+            [chartWidth]="350" [chartHeight]="280"
+            [chartTitle]="'Average Of Expected Gain And Impact'"
+            [xaxis]="{type: 'category', labels: {style:{colors: '#044492', fontSize: '8', fontWeight: 'bold'}}}"
+            [chartLabels]="products" 
+            [chartSeries]="exp_gain_impact">
+        </app-bar-chart>
+
+        <app-bar-chart *ngIf="exp_impact" class="chart"
+            [chartWidth]="350" [chartHeight]="280"
+            [chartTitle]="'Average Of Impact'"
+            [xaxis]="{type: 'category', labels: {style:{colors: '#044492', fontSize: '8', fontWeight: 'bold'}}}"
+            [chartLabels]="products" 
+            [chartSeries]="exp_impact">
+        </app-bar-chart>
+
+    </div>
+
+</div>

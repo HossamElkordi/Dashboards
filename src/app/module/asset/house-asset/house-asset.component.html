@@ -1,0 +1,86 @@
+<div class="body">
+
+    <div class="body">
+        <mat-drawer-container class="drawer-container" autosize>
+            <mat-drawer [(opened)]="is_asset_visible" class="drawer client-details-drawer" mode="over" position="end">
+                <div class="asset-sliding-div">
+                    <div class="asset-card-container" style="margin-left: 3vw;">
+                        <app-card class="asset-card" [title]="'House Details'" [information]="house_information" [Width]="'50vw'"></app-card>
+                    </div>
+                    
+                    <div class="asset-area-chart-container" style="margin-left: 1vw;">
+                        <app-area-chart #asset_area_chart></app-area-chart>
+                     </div>
+                </div>
+            </mat-drawer>
+    
+            <mat-drawer-content>
+                <mat-grid-list cols="5" rows="6" rowHeight="16.5%" gutterSize="0px">
+                    <mat-grid-tile [colspan]="tiles[0].cols" [rowspan]="tiles[0].rows" [style.background]="tiles[0].color">
+                        <app-table [dataSource]="table_data" [columns]="table_cols_names" style="height: 100%; width: 100%;" (rowDoubleClick)="view_asset($event)"></app-table>
+                    </mat-grid-tile>
+                
+                    <mat-grid-tile [colspan]="tiles[1].cols" [rowspan]="tiles[1].rows" [style.background]="tiles[1].color">
+                        <div class="tile-container">
+                            <app-area-chart #area_chart></app-area-chart>
+                        </div>
+                    </mat-grid-tile>
+            
+            
+                    <mat-grid-tile [colspan]="tiles[2].cols" [rowspan]="tiles[2].rows" [style.background]="tiles[2].color">
+                        <div class="tile-container">
+                            <app-gauge *ngIf="!is_predict" [gradient_offset]=1 [size]="190" [append]="'Million'" [gaugeValue]="gauge_value" [min]="min_gauge_value" [max]="max_gauge_value" [label]="'Average Price'"></app-gauge>
+                            <app-gauge *ngIf="is_predict" [gradient_offset]=1 [size]="190" [append]="'Million'" [gaugeValue]="predict_gauge_value" [min]="min_gauge_value" [max]="max_gauge_value" [label]="'Predicted Price'"></app-gauge>
+                            <app-card *ngIf="!is_predict && gauge_value == -1" [title]="'No Data Available'"></app-card>
+                            <app-card *ngIf="is_predict && predict_gauge_value == -1" [title]="'No Data Available'"></app-card>
+                        </div>
+                    </mat-grid-tile>
+            
+                    <mat-grid-tile [colspan]="tiles[3].cols" [rowspan]="tiles[3].rows" [style.background]="tiles[3].color">
+                        <div class="tile-container">
+                            <mat-slide-toggle  [(ngModel)]="is_predict" (change)="predict()">Predict</mat-slide-toggle>
+                        </div>
+                    </mat-grid-tile>
+                
+                    <mat-grid-tile [colspan]="tiles[4].cols" [rowspan]="tiles[4].rows" [style.background]="tiles[4].color">
+                        <div *ngIf="!is_predict" class="filters-container">
+                            <div class="num-filters">
+                                <app-num-slicer  *ngIf="slicers_ready"  [slicers]="num_slicers"  (selection)="filter_num_slicers($event)"></app-num-slicer>
+                            </div>
+                            
+                            <div class="date-filter">
+                                <app-date-slicer #date_slicer [min_val]="min_date" [max_val]="max_date" (curDateRange)="filter_date($event)"></app-date-slicer>
+                            </div>
+            
+                            <div class="cat-filters">
+                                <app-dropdown [multiple]="true" [label]="'Type'" [options]="type_items" [selected]="selectedItem_type" (selectionChange)="filter_type($event)"></app-dropdown>
+                                <app-dropdown [multiple]="true" [label]="'City'" [options]="city_items" [selected]="selectedItem_city" (selectionChange)="filter_city($event)"></app-dropdown>
+                                <app-dropdown [multiple]="true" [label]="'Bedrooms'" [options]="bedrooms_items" [selected]="selectedItem_bedrooms" (selectionChange)="filter_bedrooms($event)"></app-dropdown>
+                                <app-dropdown [multiple]="true" [label]="'Bathrooms'" [options]="bathrooms_items" [selected]="selectedItem_bathrooms" (selectionChange)="filter_bathrooms($event)"></app-dropdown>
+                                <app-dropdown [multiple]="true" [label]="'Private Garden'" [options]="private_garden_items" [selected]="selectedItem_private_garden" (selectionChange)="filter_private_garden($event)"></app-dropdown>
+                                <app-dropdown [multiple]="true" [label]="'Parking'" [options]="parking_items" [selected]="selectedItem_parking" (selectionChange)="filter_parking($event)"></app-dropdown>
+                                <app-dropdown [multiple]="true" [label]="'Security'" [options]="security_items" [selected]="selectedItem_security" (selectionChange)="filter_security($event)"></app-dropdown>
+                            </div>
+                        </div>
+            
+                        <div *ngIf="is_predict" class="predict_filters-container">
+                            <div class="num-filters">
+                                <app-num-slicer  *ngIf="slicers_ready"  [slicers]="predict_num_slicers"  (selection)="filter_num_slicers($event)"></app-num-slicer>
+                            </div>
+                            
+                            <div style="margin-bottom: 5vh;" class="cat-filters">
+                                <app-dropdown [multiple]="false" [label]="'Type'" [options]="type_items" [selected]="predict_selectedItem_type" (selectionChange)="filter_type($event)"></app-dropdown>
+                                <app-dropdown [multiple]="false" [label]="'City'" [options]="city_items" [selected]="predict_selectedItem_city" (selectionChange)="filter_city($event)"></app-dropdown>
+                                <app-dropdown [multiple]="false" [label]="'Bedrooms'" [options]="bedrooms_items" [selected]="predict_selectedItem_bedrooms" (selectionChange)="filter_bedrooms($event)"></app-dropdown>
+                                <app-dropdown [multiple]="false" [label]="'Bathrooms'" [options]="bathrooms_items" [selected]="predict_selectedItem_bathrooms" (selectionChange)="filter_bathrooms($event)"></app-dropdown>
+                                <app-dropdown [multiple]="false" [label]="'Private Garden'" [options]="private_garden_items" [selected]="predict_selectedItem_private_garden" (selectionChange)="filter_private_garden($event)"></app-dropdown>
+                                <app-dropdown [multiple]="false" [label]="'Parking'" [options]="parking_items" [selected]="predict_selectedItem_parking" (selectionChange)="filter_parking($event)"></app-dropdown>
+                                <app-dropdown [multiple]="false" [label]="'Security'" [options]="security_items" [selected]="predict_selectedItem_security" (selectionChange)="filter_security($event)"></app-dropdown>
+                            </div>
+                        </div>      
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </mat-drawer-content>
+        </mat-drawer-container>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+.page{
+    display: flex;
+}
+
+.homepage{
+    margin-top: 8%;
+    margin-left: 10%;
+    height: 100%;
+}
+
+.title{
+    padding-top: 1%;
+    line-height: 100%;
+    font-size: 500%;
+    font-weight: bold;
+}
+
+.text{
+    line-height: 100%;
+    font-size: 150%;
+    max-width: 70%;
+}
+
+ul {
+    list-style-type: disc
+}
+
+.image{
+    margin-top: 10%;
+    margin-right: 10%;
+}
+
+.mat-mdc-raised-button.prods-btn { 
+    margin-left: 11%;
+    min-width: 2%;
+    background-color: var(--blue);
+}
+
+.mat-mdc-raised-button.prods-btn:hover { 
+    margin-left: 11%;
+    min-width: 2%;
+    background-color: var(--cyan);
+    color: var(--blue);
+    cursor: pointer;
+}

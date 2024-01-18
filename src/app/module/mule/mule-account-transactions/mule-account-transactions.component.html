@@ -1,0 +1,12 @@
+<div class="body">
+    <app-card *ngIf="accountMuleTransInfo" 
+        class="title-card"
+        [title]="'Transaction Details for Account Number: ' + accountName"
+        [Width]="'75vw'"
+        >
+    </app-card>
+
+    <app-table class="table" [columns]="columns" [dataSource]="accountTransTable"
+    [(selectedRow)]="selectedTrans">
+    </app-table>
+</div>

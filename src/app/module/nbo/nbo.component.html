@@ -1,0 +1,103 @@
+<app-progress-spinner *ngIf="!tier" [typeVal]="'bar'" [modeVal]="1"></app-progress-spinner>
+
+<div *ngIf="tier">
+    <mat-drawer-container class="drawer-container" autosize>
+        <mat-drawer [(opened)]="activate_drawer" (closed)="onSideNavClose()" class="drawer client-details-drawer" mode="over" position="end">
+            
+            <app-customer-info #custInfo *ngIf="drawer_content == 'customer_info'" [id]="selected_customer"></app-customer-info>
+            
+            <app-customer-analysis *ngIf="drawer_content == 'customer_analysis'"></app-customer-analysis>
+            
+            <app-prod-analysis *ngIf="drawer_content == 'product_analysis'"></app-prod-analysis>
+
+        </mat-drawer>
+
+        <mat-drawer-content class="body">
+
+            <div class="left-panel">
+
+                <div class="filters">
+
+                    <button mat-button class="menu-btn"
+                        [matMenuTriggerFor]="prodSelection">
+                        <div class="menu-div">
+                            <label class="menu-lbl">Products</label>
+                            <label class="menu-lbl1">{{selected_product}}</label>
+                        </div>
+                        <mat-icon class="menu-arrow">arrow_drop_down</mat-icon>
+                    </button>
+
+                    <mat-menu #prodSelection="matMenu" class="prod-inner-menu">
+                        <button mat-menu-item *ngFor="let prod of productsDropDownOptions" (click)="onProdChange(prod.value)">{{ prod.value }}</button>
+                    </mat-menu>
+
+                    <app-slider [title]="'Minimum Probability'" 
+                        [min]="0" [max]="1.0" [value]="cur_proba"
+                        [step]="0.01" (changeValue)="onProbaChange($event)">
+                    </app-slider>
+
+                </div>
+
+                <app-table class="table" *ngIf="display" [columns]="tableCols" [dataSource]="custTable"
+                    (rowDoubleClick)="viewCustomerInfo($event)">
+                </app-table>
+                
+            </div>
+
+            <div *ngIf="!display">
+                <app-card class="chart2" [title]="'Filtration didn\'t return any customer'"></app-card>
+            </div>
+
+            <div class="right-panel" *ngIf="display">
+
+                <div class="right-row">
+
+                    <app-pie-chart [title]="'Number Of Customer Based On Tier'" class="chart"
+                        [type]="'donut'" [labels]="tier_unique" [series]="tier_count" [width]="240">
+                    </app-pie-chart>
+
+                    <div class="chart">
+                        <button mat-raised-button class="analysis-button" (click)="custAnalysisClick()">
+                            Customer Analysis
+                        </button>
+                        <button mat-raised-button class="analysis-button" (click)="prodAnalysisClick()">
+                            Product Analysis
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="right-row">
+
+                    <app-bar-chart [chartWidth]="330" [chartHeight]="150" class="chart"
+                        [chartTitle]="'Expected Gain and Impact'"
+                        [xaxis]="{type: 'category', labels: {style:{colors: '#044492', fontSize: '8', fontWeight: 'bold'}}}"
+                        [chartLabels]="giBarPlotLabels" 
+                        [chartSeries]="giBarPlotSeries">
+                    </app-bar-chart>
+
+                    <app-bar-chart class="bar2" [chartWidth]="330" [chartHeight]="150" class="chart"
+                        [chartTitle]="'Expected Direct and Indirect Impact'"
+                        [xaxis]="{type: 'category', labels: {style:{colors: '#044492', fontSize: '8', fontWeight: 'bold'}}}"
+                        [chartLabels]="eiBarPlotLabels" 
+                        [chartSeries]="eiBarPlotSeries">
+                    </app-bar-chart>
+
+                </div>
+
+                <div class="right-row">
+
+                    <app-bar-chart [chartWidth]="700" [chartHeight]="200" class="chart2"
+                        [chartTitle]="'Number Of Customers Based On Their Products'"
+                        [xaxis]="{type: 'category', categories: product_mix_categories, labels: {style:{colors: '#044492', fontSize: '6', fontWeight: 'bold'}}}"
+                        [chartLabels]="product_mix_unique" 
+                        [chartSeries]="custProdSeries">
+                    </app-bar-chart>
+
+                </div>
+
+            </div>
+
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

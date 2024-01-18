@@ -1,0 +1,96 @@
+.sign-in-div {
+  padding: 10%;
+  height: 93vh;
+  box-sizing: border-box;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.title {
+  line-height: normal;
+  font-size: 3em;
+  color: var(--blue);
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+mat-form-field {
+  width: 350px;
+}
+
+::ng-deep .sign-in-div .form mat-label {
+  color: var(--blue);
+  font-weight: 400;
+}
+
+::ng-deep .sign-in-div .form .mdc-floating-label--required {
+  color: red;
+}
+
+::ng-deep .sign-in-div .form .mdc-notched-outline > * {
+  border-color: var(--blue) !important;
+}
+
+::ng-deep
+  .sign-in-div
+  .form
+  .mdc-text-field:not(.mdc-text-field--disabled)
+  .mdc-text-field__input {
+  color: black;
+}
+
+::ng-deep .sign-in-div .form .mat-mdc-raised-button.mat-primary {
+  --mdc-protected-button-container-color: var(--blue);
+  --mdc-protected-button-label-text-color: #fff;
+}
+
+.sign-in-btn {
+  padding: 0;
+}
+
+.sign-in-div .mat-mdc-button:not(:disabled) {
+  color: var(--blue);
+}
+
+.forget-pwd {
+  color: #a3a3a3;
+}
+
+.create-account {
+  color: var(--blue);
+  font-weight: bold;
+}
+
+.underline:hover {
+  text-decoration: underline;
+}
+
+.underline {
+  cursor: pointer;
+}
+
+.action-div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-account-div {
+  text-align: center;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}

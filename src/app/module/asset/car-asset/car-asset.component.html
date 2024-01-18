@@ -1,0 +1,76 @@
+<div class="body">
+    <mat-drawer-container class="drawer-container" autosize>
+        <mat-drawer [(opened)]="is_asset_visible" class="drawer client-details-drawer" mode="over" position="end">
+            <div class="asset-sliding-div">
+                <div class="asset-card-container" style="margin-left: 3vw;">
+                    <app-card class="asset-card" [title]="'Car Details'" [information]="car_information" [Width]="'50vw'"></app-card>
+                </div>
+                
+                <div class="asset-area-chart-container" style="margin-left: 1vw;">
+                    <app-area-chart #asset_area_chart></app-area-chart>
+                 </div>
+            </div>
+        </mat-drawer>
+
+        <mat-drawer-content>
+            <mat-grid-list cols="5" rows="6" rowHeight="16.7%" gutterSize="0px">
+                <mat-grid-tile [colspan]="tiles[0].cols" [rowspan]="tiles[0].rows" [style.background]="tiles[0].color">
+                    <app-table [dataSource]="table_data" [columns]="table_cols_names" style="height: 100%; width: 100%;" (rowDoubleClick)="view_asset($event)"></app-table>
+                </mat-grid-tile>
+            
+                <mat-grid-tile [colspan]="tiles[1].cols" [rowspan]="tiles[1].rows" [style.background]="tiles[1].color">
+                    <div class="tile-container">
+                        <app-area-chart #area_chart></app-area-chart>
+                    </div>
+                </mat-grid-tile>
+        
+        
+                <mat-grid-tile [colspan]="tiles[2].cols" [rowspan]="tiles[2].rows" [style.background]="tiles[2].color">
+                    <div class="tile-container">
+                        <app-gauge *ngIf="!is_predict && gauge_value !== -1" [gradient_offset]=2000 [size]="190" [gaugeValue]="gauge_value" [min]="min_gauge_value" [max]="max_gauge_value" [label]="'Average Price'"></app-gauge>
+                        <app-gauge *ngIf="is_predict && predict_gauge_value !== -1" [gradient_offset]=100 [size]="190" [gaugeValue]="predict_gauge_value" [min]=0 [max]=10000 [label]="'Predicted Price'"></app-gauge>
+                        <app-card *ngIf="!is_predict && gauge_value == -1" [title]="'No Data Available'"></app-card>
+                        <app-card *ngIf="is_predict && predict_gauge_value == -1" [title]="'No Data Available'"></app-card>
+                    </div>
+                </mat-grid-tile>
+        
+                <mat-grid-tile [colspan]="tiles[3].cols" [rowspan]="tiles[3].rows" [style.background]="tiles[3].color">
+                    <div class="tile-container">
+                        <mat-slide-toggle  [(ngModel)]="is_predict" (change)="predict()">Predict</mat-slide-toggle>
+                    </div>
+                </mat-grid-tile>
+            
+                <mat-grid-tile [colspan]="tiles[4].cols" [rowspan]="tiles[4].rows" [style.background]="tiles[4].color">
+                    <div *ngIf="!is_predict" class="filters-container">
+                        <div class="num-filters">
+                            <app-num-slicer  *ngIf="slicers_ready"  [slicers]="num_slicers"  (selection)="filter_num_slicers($event)"></app-num-slicer>
+                        </div>
+                        
+                        <div class="date-filter">
+                            <app-date-slicer #date_slicer [min_val]="min_date" [max_val]="max_date" (curDateRange)="filter_date($event)"></app-date-slicer>
+                        </div>
+                        <div class="cat-filters">
+                            <app-dropdown [multiple]="true" [label]="'Model'" [options]="model_items" [selected]="selectedItem_model" (selectionChange)="filter_model($event)"></app-dropdown>
+                            <app-dropdown [multiple]="true" [label]="'Transmission'" [options]="transmission_items" [selected]="selectedItem_transmission" (selectionChange)="filter_transmission($event)"></app-dropdown>
+                            <app-dropdown [multiple]="true" [label]="'Fuel Type'" [options]="fuel_items" [selected]="selectedItem_fuel" (selectionChange)="filter_fuel($event)"></app-dropdown>
+                            <app-dropdown [multiple]="true" [label]="'Engine Size'" [options]="engine_items" [selected]="selectedItem_engine" (selectionChange)="filter_engine($event)"></app-dropdown>
+                        </div>
+                    </div>
+        
+                    <div *ngIf="is_predict" class="predict_filters-container">
+                        <div class="num-filters">
+                            <app-num-slicer  *ngIf="slicers_ready"  [slicers]="predict_num_slicers"  (selection)="filter_num_slicers($event)"></app-num-slicer>
+                        </div>
+                        
+                        <div style="margin-bottom: 5vh;" class="cat-filters">
+                            <app-dropdown [multiple]="false" [label]="'Model'" [options]="model_items" [selected]="predict_selectedItem_model" (selectionChange)="filter_model($event)"></app-dropdown>
+                            <app-dropdown [multiple]="false" [label]="'Transmission'" [options]="transmission_items" [selected]="predict_selectedItem_transmission" (selectionChange)="filter_transmission($event)"></app-dropdown>
+                            <app-dropdown [multiple]="false" [label]="'Fuel Type'" [options]="fuel_items" [selected]="predict_selectedItem_fuel" (selectionChange)="filter_fuel($event)"></app-dropdown>
+                            <app-dropdown [multiple]="false" [label]="'Engine Size'" [options]="engine_items" [selected]="predict_selectedItem_engine" (selectionChange)="filter_engine($event)"></app-dropdown>
+                        </div>
+                    </div>      
+                </mat-grid-tile>
+            </mat-grid-list>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

@@ -1,0 +1,31 @@
+
+<div class="body">
+    <app-table class="table" [columns]="columns" [dataSource]="accountsTable"
+        [(selectedRow)]="selectedAccount" (selectedRowChange)="getAverageMulePercentage($event)"
+        (rowDoubleClick)="viewAccountDetails($event)">
+    </app-table>
+    <div class="container">
+        <div class="row-uppercards">
+            <app-gauge 
+            [style] = "'margin-top: 20px;'"
+            [size] = "230" 
+            [append] = '"%"'
+            [gaugeValue] = "guageValue" 
+            [min] = 0 
+            [max] = 100 
+            [label] ="'Mule Percentage'">
+            </app-gauge>
+        <app-pie-chart
+        [title]="'Transaction Methods'"
+        [width]="330"
+        >
+        </app-pie-chart>
+    </div>
+    <div class="row-linechart">
+        <div class="chart-card">
+            <app-area-chart style="width: 100%"></app-area-chart>
+        </div>
+    </div>
+</div>
+
+</div>

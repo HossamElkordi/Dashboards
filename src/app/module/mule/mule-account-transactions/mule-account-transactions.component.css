@@ -1,0 +1,15 @@
+.body {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.title-card {
+    display: flex;
+    justify-content: center;
+}
+.table {
+    display: flex;
+    overflow-y: auto;
+    height: 74dvh;
+}

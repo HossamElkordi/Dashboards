@@ -1,0 +1,102 @@
+.demographic-segmentation-div {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+.filters-and-table-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 64%;
+  min-width: 54%;
+  height: 100%;
+  gap: 10px;
+}
+
+.filters-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+::ng-deep
+  .demographic-segmentation-div
+  .filters-container
+  .mat-mdc-text-field-wrapper {
+  width: 170px;
+}
+
+::ng-deep
+  .demographic-segmentation-div
+  .filters-container
+  .mat-mdc-form-field-subscript-wrapper {
+  height: 0;
+}
+
+app-table {
+  min-height: 0;
+  flex: 1 1 0;
+}
+
+::ng-deep .demographic-segmentation-div .mat-mdc-header-cell {
+  padding: 0;
+}
+
+.charts-container {
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.chart {
+  width: 97%;
+  height: 45%;
+  margin-bottom: 10px;
+}
+
+.bar-chart,
+.pie-chart {
+  height: 95%;
+}
+
+app-bar-chart {
+  height: 100%;
+  display: block;
+}
+
+::ng-deep .demographic-segmentation-div app-bar-chart .bar-chart-container {
+  height: 100% !important;
+}
+
+::ng-deep .demographic-segmentation-div app-pie-chart .pie-chart-container {
+  margin: 0;
+  padding: 20px 0 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+::ng-deep .demographic-segmentation-div app-bar-chart apx-chart {
+  height: 100% !important;
+  width: 100%;
+}
+
+::ng-deep .demographic-segmentation-div app-pie-chart apx-chart {
+  height: 100% !important;
+  display: flex;
+  align-items: center;
+}
+
+::ng-deep .demographic-segmentation-div app-pie-chart .pie-chart-container h2 {
+  margin: 0 !important;
+}
+
+.chart:has(div.pie-chart) {
+  height: auto;
+}

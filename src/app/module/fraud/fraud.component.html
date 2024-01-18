@@ -1,0 +1,32 @@
+
+<div class="body">
+    <app-table class="table" [columns]="columns" [dataSource]="transTable"
+        [(selectedRow)]="selectedTrans" (selectedRowChange)="viewTransDetails($event)">
+    </app-table>
+
+    <div class="side-panel">
+        <div class="info-div">
+            <app-card [Height]="'fit-content'" [title]="'User Details'" [twoColumns]="true" [Width]="'22dvw'" [information]="this.user_info" *ngIf="selectedTrans"></app-card>
+            <app-card [Height]="'fit-content'" [title]="'Card Details'" [twoColumns]="true" [Width]="'18dvw'" [information]="this.card_info" *ngIf="selectedTrans"></app-card>
+            <app-card [Height]="'fit-content'" [title]="'Transaction Details'" [twoColumns]="true" [Width]="'13dvw'" [information]="this.trans_info" *ngIf="selectedTrans"></app-card>
+        </div>
+    
+        <div class="slider-div">
+            <app-slider #low *ngIf="selectedTrans"
+                        [title]="'Low Risk Factors Count'" 
+                        [min]="(low_risk_cnt > 0) ? 1 : 0" [max]="low_risk_cnt" [value]="low_risk_cur"
+                        [step]="1" (changeValue)="low_risk_cnt_change($event)"></app-slider>
+
+            <app-slider #high *ngIf="selectedTrans"
+                        [title]="'High Risk Factors Count'" 
+                        [min]="(high_risk_cnt > 0) ? 1 : 0" [max]="high_risk_cnt" [value]="high_risk_cur"
+                        [step]="1" (changeValue)="high_risk_cnt_change($event)"></app-slider>
+        </div>
+
+        <app-bar-chart *ngIf="selectedTrans"
+            [chartWidth]="900" [chartHeight]="290" [chartTitle]="'Feature Interpretability'"
+            [xaxis]="{type: 'category', labels: {style:{colors: '#044492', fontSize: '8', fontWeight: 'bold'}}}"
+            [chartLabels]="cur_interpret_labels" [chartSeries]="bar_chart_series">
+        </app-bar-chart>
+    </div>
+</div>

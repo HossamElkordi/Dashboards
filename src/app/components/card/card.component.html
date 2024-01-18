@@ -1,0 +1,15 @@
+<div class="card-container" *ngIf="information"
+  [ngClass]="{'two-columns': information.length >= 6 && twoColumns, 'three-columns': information.length >= 6}"
+  [style.width]="Width" [style.min-height]="Height" [style.backgroundColor]="isDarkTheme ? 'var(--black-foreground)' : ''" >
+  <h2 *ngIf="title" [style.color]="isDarkTheme ? 'var(--orange)' : ''">{{ title }}</h2>
+  <div class="info-container" *ngIf="information && information.length"> <!-- new wrapper div -->
+    <div *ngFor="let info of information" class="info-row">
+      <span class="info-name" [style.color]="isDarkTheme ? '#ffffff' : ''">{{ info.name }}</span>
+      <span class="info-value" [style.color]="info.color" [style.color]="isDarkTheme ? '#ffffff' : ''">{{ info.value }}
+        <mat-icon *ngIf="info.trend === 'up'">trending_up</mat-icon>
+        <mat-icon *ngIf="info.trend === 'down'">trending_down</mat-icon>
+      </span>
+    </div>
+  </div>
+  <ng-content></ng-content>
+</div>

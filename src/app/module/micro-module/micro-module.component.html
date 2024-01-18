@@ -1,0 +1,57 @@
+<div class="page-container">
+  <div class="table-container">
+    <app-table 
+        class="table" 
+        [columns]="table_cols_names" 
+        [dataSource]="table_data"
+        style="height: 100%; width: 100%;"
+        (selectedRowChange)="selectClient($event)"
+    ></app-table>
+  </div>
+  
+  <div class="info-section">
+    <div class="upper-info">
+      <div class="score-gauge-container">
+          <app-gauge 
+          [Width]="'200px'"
+          [size]="180" 
+          [gaugeValue]="currentCreditScore" 
+          [min]="300" 
+          [max]="850" 
+          [label]="'Collection Score'"
+          class="smaller-label"></app-gauge>
+      </div>
+
+      <div class="line-container">
+        <app-line-chart
+          [Width]="'500px'"
+          [Height]="'250'"
+          title="Collection Score History"
+          [xValues]="Collection_Score_History_Labels"
+          [yValues]="Collection_Score_History_Values"
+        >
+        </app-line-chart>
+      </div> 
+    </div>
+
+    <div class="details-container">
+      <div class="client-container">
+          <app-card 
+              [Width]="'430px'" 
+              [Height]="'210px'"
+              [title]="'Client Details'" 
+              [information]="client_details">
+          </app-card>
+      </div>
+      
+      <div class="historical-container">
+          <app-card 
+              [Width]="'250px'" 
+              [Height]="'210px'"
+              [title]="'Historical Details'" 
+              [information]="historical_details">
+          </app-card>
+      </div>
+    </div>
+  </div>
+</div>

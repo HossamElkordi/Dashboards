@@ -1,0 +1,36 @@
+.dropdown .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: var(--cyan) !important;
+}
+
+.dropdown.dark-theme .mdc-text-field--filled:not(.mdc-text-field--disabled){
+  background-color: var(--orange) !important;
+}
+
+.options-panel {
+  background-color: var(--white);
+}
+
+.dropdown .label,
+.dropdown svg,
+.options-panel .mdc-list-item__primary-text,
+.options-panel .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after,
+.options-panel .mat-pseudo-checkbox {
+  color: black !important;
+}
+
+.dropdown.dark-theme .label{
+  color: white !important;
+}
+
+
+.options-panel .mat-pseudo-checkbox-full {
+  background-color: white !important;
+}
+
+.mdc-line-ripple {
+  display: none;
+}
+
+.mat-mdc-select-value {
+  color: white;
+}

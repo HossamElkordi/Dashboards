@@ -1,0 +1,67 @@
+.mat-toolbar.toolbar {
+  height: 7vh;
+  background-color: var(--blue);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ejada-logo {
+  width: 30px;
+  margin-left: 2%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.left-comps {
+  max-width: 15%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.right-comps {
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+::ng-deep .mat-mdc-menu-content {
+  background-color: white;
+  padding: 10px !important;
+  text-align: center;
+}
+
+.account-icon {
+  color: black;
+}
+
+.username {
+  color: black;
+}
+
+.sign-out-btn,
+.print-btn {
+  background-color: var(--blue) !important;
+}
+
+.auth-div {
+  display: flex;
+  gap: 5px;
+}
+
+.btn-div {
+  gap: 7px;
+  display: flex;
+  flex-direction: column;
+}

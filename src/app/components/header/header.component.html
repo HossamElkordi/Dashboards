@@ -1,0 +1,38 @@
+<mat-toolbar class="toolbar">
+    <div class="left-comps">
+        <ng-content></ng-content>
+        <div class="logo" (click)="navToHome()">
+            <mat-icon svgIcon="rajhy"></mat-icon>
+            <img class="ejada-logo" src="../../../assets/ejada_logo.png">
+        </div>
+    </div>
+    <span>{{ title }}</span>
+    <div class="right-comps">
+        <button mat-button  (click)="toggleDarkTheme()" style="background-color: var(--blue);"><mat-icon>wb_sunny</mat-icon></button>
+        <!-- <mat-slide-toggle  style="color: white">Dark Mode</mat-slide-toggle> -->
+        <div *ngIf="user === null" class="auth-div">
+            <button mat-button (click)="navToSignUp()">Sign Up</button>
+            <button mat-button (click)="navToSignIn()">Sign In</button>
+        </div>
+        <div *ngIf="user">
+            <button mat-icon-button [mat-menu-trigger-for]="menu">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+            <mat-menu #menu class="account-menu">
+                <div class="user-info">
+                    <mat-icon class="account-icon">account_circle</mat-icon>
+                    <span class="username">{{user.displayName}}</span>
+                </div>
+                <div class="btn-div">
+                    <button *ngIf="isInProduct()" mat-flat-button class="print-btn" (click)="printReport()">Print
+                        Report</button>
+                    <button mat-flat-button class="sign-out-btn" (click)="signOut()">Sign Out</button>
+                </div>
+            </mat-menu>
+        </div>
+
+        <button *ngIf="isModulePage" mat-icon-button (click)="goProducts()">
+            <mat-icon>exit_to_app</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>

@@ -1,0 +1,5 @@
+<mat-progress-spinner class="prog" *ngIf="type == 'spin' && mode == 1" [diameter]="100" [mode]="'indeterminate'"></mat-progress-spinner>
+<mat-progress-spinner class="prog" *ngIf="type == 'spin' && mode == 0" [diameter]="100" [mode]="'determinate'" [value]="value"></mat-progress-spinner>
+
+<mat-progress-bar class="prog" *ngIf="type == 'bar' && mode == 1" [mode]="'indeterminate'"></mat-progress-bar>
+<mat-progress-bar class="prog" *ngIf="type == 'bar' && mode == 0" [mode]="'determinate'" [value]="value"></mat-progress-bar>

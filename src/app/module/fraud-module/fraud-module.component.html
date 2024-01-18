@@ -1,0 +1,111 @@
+<div class="body" [class.dark-theme]="isDarkTheme">
+    <mat-drawer-container class="drawer-container" style="height: 93vh; overflow: hidden;">
+        <mat-drawer [(opened)]="activate_drawer" class="drawer client-details-drawer" mode="over" position="end" >
+            <div class="model-sliding-div" *ngIf="is_model_div_visible" [style.backgroundColor]="isDarkTheme ? 'var(--black-background)' : ''">
+                <div class="model-chart-container" >
+                    <app-bar-chart *ngIf="this.ready_model_chart && shouldRender" [chartTitle]="'Feature Importance'"
+                        [chartLabels]="model_feature_importance_labels" [chartSeries]="model_feature_importance"
+                        [chartHeight]="200" [chartWidth]="700"></app-bar-chart>
+                </div>
+        
+                <div class="model-card-container">
+                    <app-card class="model-card" [title]="'Metrics'" [information]="model_metrics" style="margin-right: 5px;"></app-card>
+                    <app-card class="model-card" [title]="'Confusion Matrix'" [information]="model_confusion_matrix" style="margin-left: 5px;"></app-card>
+                </div>
+            </div>
+
+            <div class="trans-sliding-div" *ngIf="is_trans_div_visible" [style.backgroundColor]="isDarkTheme ? 'var(--black-background)' : ''">
+                <div class="info-div">
+                    <app-card class="trans-card" [title]="'User Details'" [twoColumns]="true" [Width]="'19vw'"
+                        [information]="this.user_info"></app-card>
+                    <app-card class="trans-card" [title]="'Card Details'" [twoColumns]="true" [Width]="'18vw'"
+                        [information]="this.card_info"></app-card>
+                    <app-card class="trans-card" [title]="'Transaction Details'" [twoColumns]="true" [Width]="'12vw'"
+                        [information]="this.trans_info"></app-card>
+                </div>
+        
+                <div class="trans-bar">
+                    <div class="slider-div">
+                        <div style="width: 45%; margin-bottom: 3vh; display: inline-block; left: 10vw;">
+                            <app-slider #low [title]="'Low Risk Factors Count'" [min]="(low_risk_cnt > 0) ? 1 : 0"
+                                [max]="low_risk_cnt" [value]="low_risk_cur" [step]="1"
+                                (changeValue)="low_risk_cnt_change($event)"></app-slider>
+                        </div>
+                        <div style="width: 45%; margin: auto; margin-bottom: 3vh; display: inline-block; padding-left: 2vw;">
+                            <app-slider #high [title]="'High Risk Factors Count'" [min]="(high_risk_cnt > 0) ? 1 : 0"
+                                [max]="high_risk_cnt" [value]="high_risk_cur" [step]="1"
+                                (changeValue)="high_risk_cnt_change($event)"></app-slider>
+                        </div>
+                    </div>
+                    <app-bar-chart *ngIf="ready_shapl_bar_chart" [chartWidth]="870" [chartHeight]="130"
+                        [xaxis]="{type: 'category', labels: {style:{colors: '#044492', fontSize: '9', fontWeight: 'bold'}}}"
+                        [chartLabels]="cur_interpret_labels" [chartSeries]="bar_chart_series">
+                    </app-bar-chart>
+                </div>
+            </div>
+
+            <div class="cards-sliding-div" *ngIf="is_cards_div_visible" [style.backgroundColor]="isDarkTheme ? 'var(--black-background)' : ''">
+                <div class="cards-line-chart-container">
+                    <app-line-chart *ngIf="this.ready_cards_line_chart && shouldRender" [title]="'Rate of Fraud'"
+                        [xValues]="fraud_rate_in_time_labels" [yValues]="fraud_rate_in_time" [Height]="'220'"
+                        [Width]="'900px'"></app-line-chart>
+                </div>
+        
+                <div class="cards-bar1-chart-container" style="margin-right: 10px; margin-top: 10px;">
+                    <app-bar-chart *ngIf="this.ready_cards_bar1_chart && shouldRender"  [chartTitle]="'Fraud By Card Type'"
+                        [chartLabels]="cards_bar1_labels" [chartSeries]="cards_bar1_chart_data" [chartHeight]="200"
+                        [chartWidth]="450"></app-bar-chart>
+                </div>
+        
+                <div class="cards-bar2-chart-container"  style="margin-left: 10px; margin-top: 10px;">
+                    <app-bar-chart *ngIf="this.ready_cards_bar2_chart && shouldRender" [chartTitle]="'Transaction Amount With Multiple Cards'"
+                        [chartLabels]="cards_bar2_labels" [chartSeries]="cards_bar2_chart_data" [chartHeight]="200"
+                        [chartWidth]="450"></app-bar-chart>
+                </div>
+            </div>
+        </mat-drawer>
+
+        <mat-drawer-content [style.backgroundColor]="isDarkTheme ? 'var(--black-background)' : ''" >
+            <mat-grid-list cols="6" rows="5" rowHeight="20%" gutterSize="0px" [style.backgroundColor]="isDarkTheme ? 'var(--black-background)' : ''">
+                <mat-grid-tile [colspan]="tiles[0].cols" [rowspan]="tiles[0].rows" [style.background]="tiles[0].color">
+                    <app-table class="table" [columns]="columns" [dataSource]="transTable" style="height: 100%; width: 100%;"
+                        (rowDoubleClick)="viewTransDetails($event)" (selectedRowChange)="select_trans($event)"></app-table>
+                </mat-grid-tile>
+        
+                <mat-grid-tile [colspan]="tiles[1].cols" [rowspan]="tiles[1].rows" [style.background]="tiles[1].color" [style.backgroundColor]="isDarkTheme ? 'var(--black-background)' : ''">
+                    <div class="tile-container">
+                        <app-dropdown [allow_all]="true" [multiple]="true" [label]="'Merchant Place'" [options]="merchant_place"
+                            [selected]="selected_merchant_place"
+                            (selectionChange)="filter_merchant_place($event)"></app-dropdown>
+                        <app-date-slicer #trans_date_slicer [min_val]="from_date" [max_val]="to_date"
+                            (curDateRange)="filter_date($event)"></app-date-slicer>
+                    </div>
+                </mat-grid-tile>
+        
+                <mat-grid-tile [colspan]="tiles[2].cols" [rowspan]="tiles[2].rows" [style.background]="tiles[2].color" [style.backgroundColor]="isDarkTheme ? 'var(--black-background)' : ''">
+                    <div class="buttons-container">
+                        <button class="tabs-button" mat-raised-button (click)="toggle_cards_div()">Card Statistics</button>
+                        <button class="tabs-button" mat-raised-button (click)="toggle_model_div()">Model Metrics</button>
+                    </div>
+                    <app-gauge [label]="'Fraud'" [size]="120" [gaugeValue]="gauge_value" [min]=0 [max]=1 [gradient_offset]=0.000001></app-gauge>
+                </mat-grid-tile>
+        
+                <mat-grid-tile [colspan]="tiles[3].cols" [rowspan]="tiles[3].rows" [style.background]="tiles[3].color" [style.backgroundColor]="isDarkTheme ? 'var(--black-background)' : ''">
+                    <div style="width: 63vw" class="tile-container">
+                        <app-bar-chart [yAxisLabel]="'Million'" [chartTitle]="'Total Transactions Amount'"
+                            [chartLabels]="bar1_labels" [chartSeries]="bar1_chart_data" [chartHeight]="220"
+                            [chartWidth]="chartWidth"></app-bar-chart>
+                    </div>
+                </mat-grid-tile>
+        
+                <mat-grid-tile [colspan]="tiles[4].cols" [rowspan]="tiles[4].rows" [style.background]="tiles[4].color" [style.backgroundColor]="isDarkTheme ? 'var(--black-background)' : ''">
+                    <div style="width: 63vw;" class="tile-container">
+                        <app-bar-chart [yAxisLabel]="'Million'" [chartTitle]="'Fraud and Non-Fraud Amount'"
+                            [chartLabels]="bar2_labels" [chartSeries]="bar2_chart_data" [chartHeight]="230"
+                            [chartWidth]="chartWidth"></app-bar-chart>
+                    </div>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

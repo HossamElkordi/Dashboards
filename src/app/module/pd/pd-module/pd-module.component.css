@@ -1,0 +1,44 @@
+app-client-details {
+  background-color: white;
+  /* top: 64px;
+  z-index: 2; */
+}
+
+.container {
+  position: relative;
+  /* margin-top: 8vh; */
+}
+
+app-clients-filter {
+  height: 100%;
+  display: block;
+}
+.drawer-container {
+  background-color: var(--white);
+  height: 93vh;
+}
+
+.drawer {
+  background-color: var(--white);
+}
+
+.client-details-drawer {
+  width: 90vw;
+}
+
+.loan-details-drawer {
+  width: 80vw;
+}
+
+app-client-details {
+  width: 100%;
+}
+
+app-loan-details {
+  height: 100%;
+  display: block;
+}
+
+mat-drawer-content {
+  display: inline;
+}

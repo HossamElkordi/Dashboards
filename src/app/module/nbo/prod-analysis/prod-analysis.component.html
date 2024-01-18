@@ -1,0 +1,41 @@
+<app-progress-spinner *ngIf="!prod_info && !bought_perc && !recomm_perc && !no_acc_perc && !den_perc && !prodAccSeries" [typeVal]="'bar'" [modeVal]="1"></app-progress-spinner>
+
+<div class="body">
+
+    <div class="col">
+        <app-card *ngIf="prod_info" class="chart"
+            [Height]="'fit-content'" [Width]="'fit-content'" 
+            [title]="'Products Analysis'" 
+            [information]="prod_info">
+        </app-card>
+
+        <app-bar-chart *ngIf="prodAccSeries" class="chart"
+            [chartWidth]="350" [chartHeight]="250" 
+            [chartTitle]="'Product Acceptance Rate'"
+            [xaxis]="{type: 'category', labels: {style:{colors: '#044492', fontSize: '8', fontWeight: 'bold'}}}"
+            [chartLabels]="products" 
+            [chartSeries]="prodAccSeries">
+        </app-bar-chart>
+    </div>
+
+    <div class="col">
+        <app-pie-chart *ngIf="bought_perc" [title]="'Purchase Percentages'" class="chart"
+            [type]="'donut'" [labels]="products" [series]="bought_perc" [width]="350">
+        </app-pie-chart>
+
+        <app-pie-chart *ngIf="den_perc" [title]="'Rejection Percentages'" class="chart"
+            [type]="'donut'" [labels]="products" [series]="den_perc" [width]="350">
+        </app-pie-chart>
+    </div>
+
+    <div class="col">
+        <app-pie-chart *ngIf="recomm_perc" [title]="'Recommendation Percentages'" class="chart"
+            [type]="'donut'" [labels]="products" [series]="recomm_perc" [width]="350">
+        </app-pie-chart>
+
+        <app-pie-chart *ngIf="no_acc_perc" [title]="'Acceptance Percentages'" class="chart"
+            [type]="'donut'" [labels]="products" [series]="no_acc_perc" [width]="350">
+        </app-pie-chart>
+    </div>
+
+</div>

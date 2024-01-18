@@ -1,0 +1,16 @@
+<mat-drawer-container class="drawer-container" autosize>
+    <mat-drawer #clientDrawer [opened]="viewedClient !== null" class="drawer client-details-drawer" mode="over"
+        position="end" (closedStart)="viewedClient = null; viewedLoan = null">
+        <mat-drawer-container class="drawer-container" autosize>
+            <mat-drawer #loanDrawer [opened]="viewedLoan !== null" class="drawer loan-details-drawer" mode="over"
+                position="end" (closedStart)="viewedLoan = null">
+                <app-loan-details [loan]="viewedLoan"></app-loan-details>
+            </mat-drawer>
+            <app-client-details [client]="viewedClient" (viewLoan)="viewLoanDetails($event)"></app-client-details>
+        </mat-drawer-container>
+    </mat-drawer>
+
+    <mat-drawer-content>
+        <app-clients-filter (viewClient)="viewClientDetails($event)"></app-clients-filter>
+    </mat-drawer-content>
+</mat-drawer-container>

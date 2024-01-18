@@ -1,0 +1,64 @@
+.card-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  width: auto;
+  /* max-width: 280px; Set a max-width for readability */
+  /* margin: 20px; */
+  transition: transform 0.2s, box-shadow 0.2s; /* For hover effect */
+  /* min-height: auto; */
+  height: auto;
+  /* text-align: center; */
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: space-between;
+}
+
+.card-container.three-columns .info-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2rem;
+}
+
+.card-container.two-columns .info-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2rem;
+}
+
+.card-container:hover {
+  transform: translateY(-5px); /* Lift the card a bit on hover */
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-container h2 {
+  grid-column: 1 / -1;
+  font-size: 1.6em;
+  margin-bottom: 20px;
+  color: var(--blue); /* Darker color for better contrast */
+  font-weight: 600; /* Semi-bold title */
+  text-align: center;
+}
+
+.card-container .info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.card-container .info-row .info-name {
+  margin-right: 10px;
+  color: #000000; /* Slightly darker color */
+  font-weight: bold; /* Semi-bold text */
+  text-wrap: balance;
+  text-align: left;
+}
+
+.card-container .info-row .info-value {
+  color: #000000; /* Default color */
+  font-weight: 400; /* Regular text */
+  text-wrap: balance;
+  text-align: right;
+}

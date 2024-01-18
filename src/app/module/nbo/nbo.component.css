@@ -1,0 +1,138 @@
+.body {
+    height: 92vh;
+    display: flex;
+    flex-direction: row;
+    padding: 1%;
+}
+
+.left-panel{
+    display: flex;
+    flex-direction: column;
+    width: 40dvw;
+    min-width: 25dvw;
+    height: 100%;
+}
+
+.filters{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 98%;
+    height: auto;
+}
+
+::ng-deep.prod-inner-menu{
+    height: 30dvh;
+    .mat-mdc-menu-content{
+        background: linear-gradient(45deg, var(--blue), var(--grey));
+    }
+}
+
+::ng-deep.mat-mdc-menu-item:hover:not([disabled]){
+    background-color: var(--grey) !important;
+}
+
+::ng-deep.mat-mdc-menu-content .mat-mdc-menu-item .mdc-list-item__primary-text{
+    color: var(--white)
+}
+
+.menu-btn { 
+    display: flex;
+    height: 7dvh;
+    min-width: 15dvw;
+    margin-bottom: 1dvh;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    border-radius: 4px 4px 0px 0px;
+    background-image: linear-gradient(45deg, var(--blue), var(--grey));
+}
+
+.menu-div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.menu-lbl{
+    color: var(--white);
+    font-size: medium;
+}
+
+.menu-lbl1{
+    color: var(--white);
+    font-size: small;
+}
+
+.menu-arrow{
+    color: var(--white);
+}
+
+.table{
+    height: 90%
+}
+
+.right-panel{
+    width: 60dvw;
+    min-width: 50dvw;
+    height: 100%;
+    margin-left: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.right-row{
+    width: 99%;
+    min-height: 30%;
+    max-height: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.chart{
+    width: 45%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart2{
+    width: 95%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.analysis-button {
+    background-color: var(--blue);
+    height: 35%;
+    font-size: 15px;
+    font-weight: bold;
+    width: 80%;
+    margin: 5px;
+}
+
+
+
+
+.drawer-container {
+    background-color: var(--white);
+    height: 92vh;
+}
+
+.drawer {
+    background-color: var(--white);
+}
+
+.client-details-drawer {
+    width: 90dvw;
+}

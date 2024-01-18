@@ -1,0 +1,53 @@
+.body{
+    display: flex;
+}
+
+.table{
+    display: flex;
+    width: 30dvw;
+    overflow-y: auto;
+    height: 93vh;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 65dvw;
+}
+
+.row-linechart {
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    height: 40dvh;
+    justify-content: space-between;
+}
+
+.row-uppercards {
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    height: 40dvh;
+    justify-content: space-around;
+}
+
+.chart-card {
+    background-color: white;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 2%;
+    margin-left: 2%;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.chart-card:hover {
+    transform: translateY(-5px); /* Lift the card a bit on hover */
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.15);
+}

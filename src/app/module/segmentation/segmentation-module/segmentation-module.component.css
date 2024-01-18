@@ -1,0 +1,27 @@
+.segmentation-div {
+  display: flex;
+  height: 93vh;
+}
+
+.menu {
+  background-color: var(--blue);
+  min-width: 220px;
+  max-width: 220px;
+}
+
+mat-expansion-panel-header,
+mat-expansion-panel {
+  background-color: var(--blue);
+}
+
+.content {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 10px;
+}
+
+::ng-deep.check-box{
+  .mdc-form-field>label{
+      color: var(--white);
+  }
+}

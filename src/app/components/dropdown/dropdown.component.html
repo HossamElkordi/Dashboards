@@ -1,0 +1,26 @@
+<mat-form-field class="dropdown" [class.dark-theme]="isDarkTheme">
+    <mat-label class="label">{{label}}</mat-label>
+    <mat-select *ngIf="!multiple" [(value)]="selected" (selectionChange)="selectionChange.emit($event.value)"
+        panelClass="options-panel">
+        <cdk-virtual-scroll-viewport *ngIf="options" [itemSize]="50" [minBufferPx]="200" [maxBufferPx]="250"
+            [ngStyle]="{'height': options.length > 5 ? '250px' : options.length * 50 + 'px'}">
+            <mat-option *cdkVirtualFor="let option of options" [value]="option.value" class="option">
+                {{option.label}}
+            </mat-option>
+        </cdk-virtual-scroll-viewport>
+    </mat-select>
+
+    <mat-select *ngIf="multiple" [(value)]="selected" multiple (selectionChange)="selectionChange.emit($event.value)"
+        panelClass="options-panel">
+        <cdk-virtual-scroll-viewport *ngIf="options" [itemSize]="50" [minBufferPx]="200" [maxBufferPx]="50000"
+            [ngStyle]="{'height': options.length > 5 ? '250px' : options.length * 50 + 'px'}">
+            <mat-option *cdkVirtualFor="let option of options" [value]="option.value" class="option">
+                {{option.label}}
+            </mat-option>
+        </cdk-virtual-scroll-viewport>
+        <mat-select-trigger *ngIf="options && allow_all">
+            {{ selected.length === options.length ? 'All' : selected.join(', ') }}
+        </mat-select-trigger>
+    </mat-select>
+
+</mat-form-field>

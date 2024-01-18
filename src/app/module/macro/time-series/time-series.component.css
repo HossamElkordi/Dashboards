@@ -1,0 +1,97 @@
+.title{
+    font-size: x-large;
+    font-weight: bold;
+    color: var(--blue);
+}
+
+.cards{
+    display: flex;
+    justify-content: space-between;
+}
+
+.lbl{
+    color: var(--white);
+}
+
+.genai-toggle{
+    margin-left: 2%;
+}
+
+.mat-mdc-slide-toggle.genai-toggle {
+    --mdc-switch-disabled-selected-track-color: var(--grey);
+    --mdc-switch-disabled-unselected-track-color: var(--grey);
+    --mdc-switch-unselected-focus-state-layer-color: var(--grey);
+    --mdc-switch-unselected-pressed-state-layer-color: var(--grey);
+    --mdc-switch-unselected-hover-state-layer-color: var(--grey);
+    --mdc-switch-unselected-focus-track-color: var(--blue);
+    --mdc-switch-unselected-hover-track-color: var(--blue);
+    --mdc-switch-unselected-pressed-track-color: var(--blue);
+    --mdc-switch-unselected-track-color: var(--blue);
+    --mdc-switch-unselected-focus-handle-color: var(--grey);
+    --mdc-switch-unselected-hover-handle-color: var(--grey);
+    --mdc-switch-unselected-pressed-handle-color: var(--grey);
+    --mdc-switch-handle-surface-color: var(--grey);
+    --mdc-switch-unselected-handle-color: var(--grey);
+    --mdc-switch-selected-icon-color: green;
+    --mdc-switch-disabled-selected-icon-color: green;
+    --mdc-switch-disabled-unselected-icon-color: red;
+    --mdc-switch-unselected-icon-color: red;
+
+    --mdc-switch-selected-focus-state-layer-color: var(--grey);
+    --mdc-switch-selected-handle-color: var(--grey);
+    --mdc-switch-selected-hover-state-layer-color: var(--grey);
+    --mdc-switch-selected-pressed-state-layer-color: var(--grey);
+    --mdc-switch-selected-focus-handle-color: var(--grey);
+    --mdc-switch-selected-hover-handle-color: var(--grey);
+    --mdc-switch-selected-pressed-handle-color: var(--grey);
+    --mdc-switch-selected-focus-track-color: var(--blue);
+    --mdc-switch-selected-hover-track-color: var(--blue);
+    --mdc-switch-selected-pressed-track-color: var(--blue);
+    --mdc-switch-selected-track-color: var(--blue);
+}
+
+::ng-deep.inner-menu{
+    min-height: fit-content;
+    max-height: 30dvh;
+    .mat-mdc-menu-content{
+        background: linear-gradient(45deg, var(--blue), var(--grey));
+    }
+}
+
+::ng-deep.mat-mdc-menu-item:hover:not([disabled]){
+    background-color: var(--grey) !important;
+}
+
+::ng-deep.mat-mdc-menu-content .mat-mdc-menu-item .mdc-list-item__primary-text{
+    color: var(--white)
+}
+
+.selections{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.menu-btn { 
+    display: flex;
+    height: 7dvh;
+    min-width: 15dvw;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    border-radius: 4px 4px 0px 0px;
+    background-image: linear-gradient(45deg, var(--blue), var(--grey));
+}
+
+.menu-div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.menu-lbl{
+    color: var(--white);
+}
+
+.menu-arrow{
+    color: var(--white);
+}

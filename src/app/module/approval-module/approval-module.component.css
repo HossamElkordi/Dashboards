@@ -1,0 +1,211 @@
+.body {
+    height: 91vh;
+    padding: 5px;
+}
+
+.body.dark-theme {
+    background-color: var(--black-background);
+    color: #ffffff;
+}
+
+.body.dark-theme button{
+    background-color: var(--orange) !important;
+}
+
+:host ::ng-deep .card-container {
+    height: 35vh !important;
+}
+
+mat-grid-tile {
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Advanced Analysis */
+.top-sliding-div {
+    position: fixed;
+    top: 7vh;
+    left: 0;
+    width: 84vw;
+    height: 50vh;
+    background-color: white;
+    display: flex;
+    z-index: 100;
+}
+
+.top-sliding-div {
+    transform: translateY(-100%);
+    opacity: 0;
+    display: flex;
+    flex-wrap: wrap;
+    border-right: 4px solid var(--cyan);
+    border-bottom: 4px solid var(--cyan);
+    border-bottom-right-radius: 15px;
+}
+
+.top-sliding-div.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.body.dark-theme .top-sliding-div{
+    border-right: 4px solid var(--orange);
+    border-bottom: 4px solid var(--orange);
+}
+app-dropdown {
+    padding: 5px;
+    width: 14.9vw;
+}
+
+app-num-slicer {
+    width: 39vw;
+    margin: auto;
+    margin-top: 0px;
+}
+
+.toggle-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+
+.special-button {
+    background-color: var(--blue) !important;
+    height: 46% !important;
+    font-size: 10px !important;
+    width: 80% !important;
+    margin: 5px;
+}
+
+.right-sliding-div {
+    position: fixed;
+    top: 7vh;
+    right: 0;
+    width: 56vw;
+    height: 93vh;
+    background-color: white;
+    z-index: 100;
+
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 4fr 4fr;
+    grid-template-rows: 5fr 1fr;
+    grid-template-areas:
+        "chart-1 chart-2"
+        "chart-buttons chart-buttons";
+    margin: 5px;
+}
+
+
+
+.chart-1{
+    grid-area: chart-1;
+    height: 70vh;
+    margin-right: 5px;
+}
+
+.chart-2{
+    grid-area: chart-2;
+    height: 70vh;
+    margin-left: 5px;
+}
+
+.chart-buttons{
+    grid-area: chart-buttons;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.sec-button{
+    background-color: var(--blue) !important;
+    height: 46% !important;
+    font-size: 10px !important;
+    margin: 5px;
+}
+
+.close-button{
+    position: fixed;
+    left: 0;
+    bottom: 10vh;
+    color: var(--blue);
+}
+
+mat-icon{
+    font-size: 1.6rem !important;
+    font-weight: bold !important;
+}
+
+.reset-button {
+    background-color: var(--blue) !important;
+    height: 9vh !important;
+    max-height: 55px !important;
+    font-size: 15px !important;
+    width: 1vw !important;
+    margin: 5px;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+@media (max-width: 1200px) {
+    :host ::ng-deep .dropdown {
+        width: 13vw !important;
+    }
+    .reset-button {
+        background-color: var(--blue) !important;
+        height: 9vh !important;
+        max-height: 55px !important;
+        font-size: 15px !important;
+        width: 20px !important;
+        margin: 5px;
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+    :host ::ng-deep app-num-slicer {
+        width: 35vw;
+        margin: auto;
+        margin-top: 0px;
+    }
+
+    .top-sliding-div {
+        position: fixed;
+        top: 7vh;
+        left: 0;
+        width: 84vw;
+        height: 58vh;
+        background-color: white;
+        display: flex;
+        z-index: 100;
+    }
+    
+    app-num-slicer {
+        width: 40vw;
+        margin: auto;
+        margin-top: 0px;
+    }
+    
+  }
+
+  .drawer-container {
+    background-color: var(--white);
+    height: 92vh;
+  }
+  
+  .drawer {
+    background-color: var(--white);
+  }
+  
+  .client-details-drawer {
+    width: 56vw;
+  }
+  
+  mat-drawer-content {
+    display: inline;
+  }

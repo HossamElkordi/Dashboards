@@ -1,0 +1,82 @@
+.sign-up-div {
+  padding: 5%;
+  height: 93vh;
+  box-sizing: border-box;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.title {
+  line-height: normal;
+  font-size: 3em;
+  color: var(--blue);
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+mat-form-field {
+  width: 350px;
+}
+
+.have-account-div {
+  text-align: center;
+}
+
+::ng-deep .sign-up-div .form mat-label {
+  color: var(--blue);
+  font-weight: 400;
+}
+
+::ng-deep .sign-up-div .form .mdc-floating-label--required {
+  color: red;
+}
+
+::ng-deep .sign-up-div .form .mdc-notched-outline > * {
+  border-color: var(--blue) !important;
+}
+
+::ng-deep
+  .sign-up-div
+  .form
+  .mdc-text-field:not(.mdc-text-field--disabled)
+  .mdc-text-field__input {
+  color: black;
+}
+
+::ng-deep .sign-up-div .form .mat-mdc-raised-button.mat-primary {
+  --mdc-protected-button-container-color: var(--blue);
+  --mdc-protected-button-label-text-color: #fff;
+}
+
+.create-account-btn {
+  padding: 0;
+}
+
+.sign-up-div .form .mat-mdc-button:not(:disabled) {
+  color: var(--blue);
+}
+
+.sign-in {
+  color: var(--blue);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sign-in:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}

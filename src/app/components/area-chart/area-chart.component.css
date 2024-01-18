@@ -1,0 +1,7 @@
+::ng-deep.apexcharts-menu-item{
+    color: var(--blue);
+}
+
+::ng-deep.apexcharts-tooltip {
+    color: var(--blue);
+}

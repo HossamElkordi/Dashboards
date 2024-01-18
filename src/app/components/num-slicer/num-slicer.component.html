@@ -1,0 +1,9 @@
+<div class="card" [class.dark-theme]="isDarkTheme">
+    <div class="slicers" *ngFor="let slicer of slicers">
+        <p class="header-label">{{slicer.title}}</p>
+        <mat-slider discrete class="slicer-style" min={{slicer.min_val}} max={{slicer.max_val}} step={{slicer.step}}>
+            <input matSliderStartThumb [(ngModel)]="slicer.cur_min" (change)="emit_selection()">
+            <input matSliderEndThumb [(ngModel)]="slicer.cur_max" (change)="emit_selection()">
+        </mat-slider>
+    </div>
+</div>

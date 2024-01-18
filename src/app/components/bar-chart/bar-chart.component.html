@@ -1,0 +1,14 @@
+<div class="bar-chart-container" [style.backgroundColor]="isDarkTheme ? 'var(--black-foreground)' : ''"> 
+    <apx-chart
+        [chart]="options"
+        [dataLabels]="dataLabels"
+        [legend]="chartlegend"
+        [colors]="colors"
+        [title]="title"
+        [series]="chartSeries" 
+        [labels]="chartLabels"
+        [xaxis]="xaxis"
+        [yaxis]="yaxis"
+        [theme]="theme">
+    </apx-chart>
+</div>

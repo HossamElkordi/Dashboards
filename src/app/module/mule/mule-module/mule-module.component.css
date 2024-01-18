@@ -1,0 +1,25 @@
+app-mule-account-transactions{
+    background-color: white;
+  }
+  .container {
+    position: relative;
+  }
+  
+  .drawer-container {
+    background-color: var(--white);
+    height: 93vh;
+  }
+  
+  .drawer {
+    background-color: var(--white);
+  }
+  
+  .client-details-drawer {
+    width: 90vw;
+  }
+  
+  app-mule-accounts {
+    width: 100%;
+  }
+  
+  

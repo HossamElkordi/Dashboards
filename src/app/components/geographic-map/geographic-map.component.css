@@ -1,0 +1,26 @@
+.geo-map {
+  height: 100%;
+}
+
+app-card {
+  height: 100%;
+  display: block;
+}
+
+::ng-deep .geo-map .card-container {
+  display: flex !important;
+  flex-direction: column;
+  margin: 0 !important;
+  padding: 10px !important;
+  box-sizing: border-box;
+  height: 100% !important;
+}
+
+.map-container {
+  flex: 1 1 0;
+}
+
+igx-geographic-map {
+  height: 100%;
+  cursor: pointer;
+}

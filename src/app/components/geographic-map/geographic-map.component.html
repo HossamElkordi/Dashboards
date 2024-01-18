@@ -1,0 +1,12 @@
+<div class="geo-map">
+    <app-card [title]="title">
+        <div class="map-container">
+            <igx-geographic-map [width]="width" [height]="height" background="transparent" zoomable="true"
+                panningEnabled="true" isHorizontalWrappingEnabled="true">
+                <igx-geographic-symbol-series [dataSource]="data" longitudeMemberPath="longitude"
+                    latitudeMemberPath="latitude" markerBrush="#044492"
+                    markerOutline="#044492"></igx-geographic-symbol-series>
+            </igx-geographic-map>
+        </div>
+    </app-card>
+</div>

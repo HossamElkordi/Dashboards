@@ -1,0 +1,40 @@
+::ng-deep.mat-calendar {
+  background: linear-gradient(45deg, var(--blue), var(--grey));
+}
+
+::ng-deep.mat-calendar-body-selected {
+  background-color: var(--cyan) !important;
+  color: var(--blue);
+}
+
+::ng-deep.mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover
+  > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(
+    .mat-calendar-body-comparison-identical
+  ) {
+  background-color: var(--grey) !important;
+}
+
+::ng-deep.mat-datepicker-toggle {
+  color: var(--var(--white));
+}
+
+.lbl {
+  color: var(--white);
+}
+
+.hint {
+  color: var(--blue);
+  font-weight: bold;
+}
+
+::ng-deep .date .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background: linear-gradient(45deg, var(--blue), var(--grey));
+}
+
+input.inp {
+  caret-color: var(--blue) !important;
+}
+
+.container {
+  display: flex;
+}

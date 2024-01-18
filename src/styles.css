@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/*  Global Colors */
+:root {
+    --blue: #044492;
+    --cyan: #92BBE1;
+    --grey: #BCBDBF;
+    --white: #FFFFFF;
+    --black-background: #161616;
+    --black-foreground: #424242;
+    --orange: #ff8000;
+}
+
+.mdc-form-field>label{
+    color: var(--blue) ;
+}
+
+/* body scrollbar */
+::-webkit-scrollbar {
+    width: 0.7vw;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--grey); 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--cyan); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #567a9b; 
+}
+

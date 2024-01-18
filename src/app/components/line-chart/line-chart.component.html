@@ -1,0 +1,17 @@
+<div class="line-chart-container" [style.width]="Width" [style.backgroundColor]="isDarkTheme ? 'var(--black-foreground)' : ''">
+    <apx-chart
+    [tooltip]="tooltipOptions"
+    [series]="chartSeries"
+    [chart]="chartOptions"
+    [title]="chartTitleOptions"
+    [xaxis]="xAxisOptions"
+    [stroke]="strokeOptions"
+    [grid]="gridOptions"
+    [fill]="fillOptions"
+    [markers]="markersOptions"
+    [yaxis]="yAxisOptions"
+    [dataLabels]="dataLabelsOptions"
+    [theme]="theme"
+    >
+    </apx-chart>
+</div>

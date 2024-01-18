@@ -1,0 +1,30 @@
+<div class="big-container">
+
+    <div class="date-and-table-container">
+        <app-date-slicer (curDateRange)="applyFilters({date: $event})"></app-date-slicer>
+
+        <app-table class="table" [dataSource]="clients" [columns]="columns" (filterClients)="applyFilters($event)"
+            [(selectedRow)]="selectedClient" (selectedRowChange)="selectClient($event)"
+            (rowDoubleClick)="viewClientDetails($event)"></app-table>
+
+    </div>
+
+    <div class="charts-container">
+
+        <div class="gauge-and-pie-container">
+            <app-gauge [size]="180" [gaugeValue]="gauge_value" [min]="0" [max]="30" [label]="gauge_label"
+                [append]="gauge_append"></app-gauge>
+            <app-pie-chart *ngIf="pieChartSeries" [series]="pieChartSeries" [labels]="pieChartLabels"
+                [title]="pieChartTitle"></app-pie-chart>
+            <app-pie-chart *ngIf="!pieChartSeries" [title]="pieChartTitle"></app-pie-chart>
+        </div>
+
+        <div class="bar-container">
+            <app-bar-chart *ngIf="barChartSeries" [chartSeries]="barChartSeries" [chartLabels]="barChartLabels"
+                chartWidth="100%" [chartTitle]="barChartTitle"></app-bar-chart>
+            <app-bar-chart *ngIf="!barChartSeries" chartWidth="100%"
+                [chartTitle]="barChartTitle"></app-bar-chart>
+        </div>
+    </div>
+
+</div>

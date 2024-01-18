@@ -1,0 +1,56 @@
+.page-container {
+    display: flex;
+    gap: 20px;  /* Space between table and information panels */
+    padding: 10px;
+    height: 93vh;
+    box-sizing: border-box;
+}
+
+.table-container {
+    width: 50%;
+    flex: 1 1 0;
+    min-height: 0;
+    /* overflow: auto; */
+}
+
+.information-container {
+    width: 50%;
+    display: flex; /* Use Flexbox */
+    flex-direction: column; /* Stack elements vertically */
+    /* overflow: auto; */
+}
+
+.details-container {
+    display: flex;
+    gap: 20px;  /* Space between table and information panels */
+    flex-grow: 1; /* Take up remaining space */
+}
+
+.upper-info {
+    display: flex; /* Use Flexbox */
+    justify-content: space-between; /* Space out items */
+    align-items: center; /* Align items vertically */
+    margin-bottom: 20px; /* Space below this section */
+}
+
+.score-gauge-container, .line-container {
+    flex: 1; /* Allow these containers to grow and take available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .score-gauge-container .app-gauge-label {
+    white-space: normal;
+    word-break: break-word;
+} */
+
+.smaller-label {
+    font-size: 2rem !important; /* Adjust the font size as needed */
+}
+
+@media (max-width: 768px) {
+    .upper-info {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+}

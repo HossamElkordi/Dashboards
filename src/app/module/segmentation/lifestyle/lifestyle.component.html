@@ -1,0 +1,19 @@
+<div class="lifestyle-div">
+    <app-table class="table" [columns]="columns" [dataSource]="tableData"
+        (selectedRowChange)="selectClient($event)"></app-table>
+    <div class="cards-div">
+        <div *ngIf="data$ | async; else emptyCards">
+            <app-card [title]="cardsInfo['customerInfo'].title"
+                [information]="cardsInfo['customerInfo'].info"></app-card>
+            <app-card *ngFor="let card of displayedCards" [twoColumns]="true" [title]="cardsInfo[card].title"
+                [information]="cardsInfo[card].info"></app-card>
+        </div>
+    </div>
+</div>
+
+<ng-template #emptyCards>
+    <app-card [title]="emptyCardsInfo['customerInfo'].title"
+        [information]="emptyCardsInfo['customerInfo'].info"></app-card>
+    <app-card *ngFor="let card of displayedCards" [twoColumns]="true" [title]="emptyCardsInfo[card].title"
+        [information]="emptyCardsInfo[card].info"></app-card>
+</ng-template>

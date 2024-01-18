@@ -1,0 +1,14 @@
+<mat-drawer-container class="drawer-container" autosize>
+    <mat-drawer #clientDrawer [opened]="viewedAccount !== null" class="drawer client-details-drawer" mode="over"
+        position="end" (closedStart)="viewedAccount = null">
+        <mat-drawer-container class="drawer-container" autosize>
+            <!-- <app-client-details [client]="viewedAccount" (viewLoan)="viewLoanDetails($event)"></app-client-details> -->
+            <app-mule-account-transactions [account]="viewedAccount">
+
+            </app-mule-account-transactions>
+        </mat-drawer-container>
+    </mat-drawer>
+
+    <app-mule-accounts (viewAccount)="viewClientDetails($event)"></app-mule-accounts>
+
+</mat-drawer-container>

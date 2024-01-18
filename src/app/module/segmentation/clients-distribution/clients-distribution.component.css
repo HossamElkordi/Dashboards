@@ -1,0 +1,41 @@
+.clients-distribution-div {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.filters-and-table-div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 60%;
+  min-width: 54%;
+  align-items: center;
+}
+
+.charts-div {
+  flex-grow: 1;
+}
+
+.chart {
+  height: 60%;
+}
+
+.table {
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+::ng-deep .clients-distribution-div .mat-mdc-form-field-subscript-wrapper {
+  height: 0;
+}
+
+::ng-deep .clients-distribution-div .mat-mdc-header-cell {
+  padding: 0 2px;
+}
+
+::ng-deep .clients-distribution-div .mat-mdc-cell {
+  padding: 0 2px;
+}

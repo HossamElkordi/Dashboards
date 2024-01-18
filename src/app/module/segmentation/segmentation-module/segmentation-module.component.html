@@ -1,0 +1,28 @@
+<div class="segmentation-div">
+    <div class="menu">
+        <div *ngFor="let tab of segmentationTabs" (click)="selected=tab">
+            <mat-accordion>
+                <mat-expansion-panel [expanded]="selected===tab">
+                    <mat-expansion-panel-header class="exp-panel">
+                        <mat-panel-title class="panel-text">{{segmentationTabsInfo[tab].title}}</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <app-check-box class="check-box" [items]="segmentationTabsInfo[tab].charts"
+                        (items_event)="changeState(tab, $event)"></app-check-box>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <mat-divider></mat-divider>
+        </div>
+    </div>
+    <div class="content">
+        <app-demographic-segmentation *ngIf="selected===segmentationTabsDict.demoSeg"
+            [state]="segmentationTabsInfo[segmentationTabsDict.demoSeg].charts"></app-demographic-segmentation>
+        <app-lifecycle *ngIf="selected===segmentationTabsDict.lifecycle"
+            [state]="segmentationTabsInfo[segmentationTabsDict.lifecycle].charts"></app-lifecycle>
+        <app-spending-behavior *ngIf="selected===segmentationTabsDict.spendingBehavior"
+            [state]="segmentationTabsInfo[segmentationTabsDict.spendingBehavior].charts"></app-spending-behavior>
+        <app-clients-distribution *ngIf="selected===segmentationTabsDict.clientsDist"
+            [state]="segmentationTabsInfo[segmentationTabsDict.clientsDist].charts"></app-clients-distribution>
+        <app-lifestyle *ngIf="selected===segmentationTabsDict.lifestyle"
+            [state]="segmentationTabsInfo[segmentationTabsDict.lifestyle].charts"></app-lifestyle>
+    </div>
+</div>

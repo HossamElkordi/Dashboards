@@ -1,0 +1,148 @@
+.page{
+    display: flex;
+    height: 100%;
+}
+
+.charts-toggle{
+    margin: 3%;
+}
+
+::ng-deep.charts-toggle{
+    .mdc-form-field>label{
+        color: var(--white);
+    }
+}
+
+.mat-mdc-slide-toggle.charts-toggle {
+    --mdc-switch-disabled-selected-track-color: var(--grey);
+    --mdc-switch-disabled-unselected-track-color: var(--grey);
+    --mdc-switch-unselected-focus-state-layer-color: var(--grey);
+    --mdc-switch-unselected-pressed-state-layer-color: var(--grey);
+    --mdc-switch-unselected-hover-state-layer-color: var(--grey);
+    --mdc-switch-unselected-focus-track-color: var(--cyan);
+    --mdc-switch-unselected-hover-track-color: var(--cyan);
+    --mdc-switch-unselected-pressed-track-color: var(--cyan);
+    --mdc-switch-unselected-track-color: var(--cyan);
+    --mdc-switch-unselected-focus-handle-color: var(--grey);
+    --mdc-switch-unselected-hover-handle-color: var(--grey);
+    --mdc-switch-unselected-pressed-handle-color: var(--grey);
+    --mdc-switch-handle-surface-color: var(--grey);
+    --mdc-switch-unselected-handle-color: var(--grey);
+    --mdc-switch-selected-icon-color: green;
+    --mdc-switch-disabled-selected-icon-color: green;
+    --mdc-switch-disabled-unselected-icon-color: red;
+    --mdc-switch-unselected-icon-color: red;
+
+    --mdc-switch-selected-focus-state-layer-color: var(--grey);
+    --mdc-switch-selected-handle-color: var(--grey);
+    --mdc-switch-selected-hover-state-layer-color: var(--grey);
+    --mdc-switch-selected-pressed-state-layer-color: var(--grey);
+    --mdc-switch-selected-focus-handle-color: var(--grey);
+    --mdc-switch-selected-hover-handle-color: var(--grey);
+    --mdc-switch-selected-pressed-handle-color: var(--grey);
+    --mdc-switch-selected-focus-track-color: var(--cyan);
+    --mdc-switch-selected-hover-track-color: var(--cyan);
+    --mdc-switch-selected-pressed-track-color: var(--cyan);
+    --mdc-switch-selected-track-color: var(--cyan);
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: fixed;
+    min-width: 20%;
+    max-width: 20%;
+    height: 93vh;
+    min-height: 90%;
+    background-color: var(--blue);
+}
+
+.menu-content{
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+::ng-deep.check{
+    .mdc-form-field>label{
+        color: var(--white);
+    }
+}
+
+.vert-spacer{
+    flex: 0.85 0.85 auto;
+}
+
+.logo{
+    width: 30%;
+}
+
+::-webkit-scrollbar {
+    width: 0.5vw;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--grey); 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--cyan); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #567a9b; 
+}
+
+.content{
+    margin-left: 23%;
+    margin-top: 8%;
+    height: 100%;
+    min-width: 77%;
+    max-width: 100%;
+    width: 90%;
+}
+
+.menu-div{
+    margin: 1%;
+}
+
+.page-div{
+    border-top-color: var(--blue);
+    border-top-width: 2px;
+    min-width: 100%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.panel-text{
+    color: var(--white);
+}
+
+.mat-expansion-panel-header.exp-panel{
+    background: var(--blue);
+}
+
+.mat-expansion-panel-header.exp-panel:hover{
+    background: var(--blue) !important;
+}
+
+.mat-expansion-panel-header.exp-panel.mat-expanded,
+.mat-expansion-panel-header.exp-panel.mat-expanded:hover {
+  background: var(--blue);
+}
+
+::ng-deep .mat-expansion-panel-body {
+    background-color: var(--blue);
+} 
+
+.ind-frame{
+    min-height: 15%;
+    width: 90%;
+    max-width: 90%;
+    min-width: 60%;
+    margin-bottom: 1%;
+    z-index: 0;
+}

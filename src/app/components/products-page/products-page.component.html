@@ -1,0 +1,48 @@
+<app-header [isModulePage]="true" [title]="getProductName(selected_product)">
+    <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+</app-header>
+
+<mat-drawer-container class="drawer-container">
+    <mat-drawer #drawer class="sidenav" mode="over" position="start">
+        <button style="height: 0; opacity: 0;"></button>
+        <ng-container *ngFor="let product of products">
+            <button mat-button
+                [ngClass]="{'prod-selected-btn': selected_product == product.id, 'prod-btn': selected_product != product.id}"
+                (click)="change_product(product.id); drawer.toggle();">
+                <mat-icon>{{ product.icon }}</mat-icon>
+                {{ product.name }}
+            </button>
+            <mat-divider></mat-divider>
+        </ng-container>
+
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon class="asset-icon">business</mat-icon>
+                        Asset Management
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <button class="asset-button" (click)="change_product('car')" mat-button><mat-icon> directions_car</mat-icon>Car</button>
+                <button class="asset-button" (click)="change_product('house')" mat-button><mat-icon>home</mat-icon>House</button>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-drawer>
+
+    <div class="page-content">
+        <app-macro-module *ngIf="selected_product=='macro'"></app-macro-module>
+        <app-approval-module *ngIf="selected_product=='approval'"></app-approval-module>
+        <app-pd-module *ngIf="selected_product=='pd'"></app-pd-module>
+        <app-micro-module *ngIf="selected_product=='micro'"></app-micro-module>
+        <app-car-asset *ngIf="selected_product=='car'"></app-car-asset>
+        <app-house-asset *ngIf="selected_product=='house'"></app-house-asset>
+        <app-segmentation-module *ngIf="selected_product=='segm'"></app-segmentation-module>
+        <app-fraud-module *ngIf="selected_product=='fraud'"></app-fraud-module>
+        <app-mule-module *ngIf="selected_product=='mule'"></app-mule-module>
+        <app-nbo *ngIf="selected_product=='nbo'"></app-nbo>
+    </div>
+
+</mat-drawer-container>

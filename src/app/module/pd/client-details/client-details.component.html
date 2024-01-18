@@ -1,0 +1,27 @@
+<div class="client-details-div">
+    <div class="card-and-piechart-container flex-container">
+        <app-card title="Client Information"></app-card>
+        <app-pie-chart *ngIf="pieChartData$ | async; else emptyPieChart" class="distribution-piechart"
+            [series]="pieChartSeries" [labels]="pieChartLabels" [title]="pieChartTitle" [width]="370"></app-pie-chart>
+        <ng-template #emptyPieChart>
+            <app-pie-chart [title]="pieChartTitle" [width]="370"></app-pie-chart>
+        </ng-template>
+    </div>
+    <div class="events-and-barchart-container flex-container">
+        <div class="card-container">
+            <h2>Events</h2>
+            <app-check-box (items_event)="handleCheckEvents($event)"></app-check-box>
+        </div>
+        <app-bar-chart *ngIf="barChartData$ | async; else emptyBarChart" [chartSeries]="barChartSeries"
+            [chartLabels]="barChartLabels" [chartTitle]="barChartTitle" [xaxis]="{ type: 'datetime' }" chartWidth="100%"
+            chartHeight="100%"></app-bar-chart>
+        <ng-template #emptyBarChart>
+            <app-bar-chart [chartTitle]="barChartTitle" chartWidth="100%" chartHeight="100%"></app-bar-chart>
+        </ng-template>
+    </div>
+    <app-table *ngIf="tableData$ | async; else emptyTable" [columns]="columns" [dataSource]="clientLoans"
+        [(selectedRow)]="selectedLoan" (rowDoubleClick)="viewLoanDetails($event)"></app-table>
+    <ng-template #emptyTable>
+        <app-table [columns]="columns"></app-table>
+    </ng-template>
+</div>

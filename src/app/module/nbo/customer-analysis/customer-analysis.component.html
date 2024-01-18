@@ -1,0 +1,44 @@
+<app-progress-spinner *ngIf="!customer_analysis && !products_analysis && !custProdCountSeries && !tierSeries && !cnt_series && !min_age && !max_age" [typeVal]="'bar'" [modeVal]="1"></app-progress-spinner>
+
+<div class="body">
+
+    <div class="col">
+        <app-card *ngIf="customer_analysis" class="chart"
+            [Height]="'fit-content'" [Width]="'fit-content'" 
+            [title]="'Customer Analysis'" 
+            [twoColumns]="true"  
+            [information]="this.customer_analysis">
+        </app-card>
+
+        <app-pie-chart #donut *ngIf="tierSeries" class="chart"
+            [title]="'Number Of Customers per Tier'"
+            [type]="'donut'" [labels]="tiers" [series]="tierSeries" [width]="280">
+        </app-pie-chart>
+
+        <div *ngIf="cnt_series" class="chart-card chart">
+            <app-area-chart #cnt style="width: 100%"></app-area-chart>
+        </div>
+    </div>
+
+    <div class="col">
+        <app-card *ngIf="products_analysis" class="chart"
+            [Height]="'fit-content'" [Width]="'fit-content'" 
+            [title]="'Product Analysis'" 
+            [twoColumns]="true"  
+            [information]="this.products_analysis">
+        </app-card>
+
+        <app-bar-chart *ngIf="custProdCountSeries" class="chart"
+            [chartWidth]="500" [chartHeight]="200" 
+            [chartTitle]="'Number Of Customer per Product'"
+            [xaxis]="{type: 'category', labels: {style:{colors: '#044492', fontSize: '8', fontWeight: 'bold'}}}"
+            [chartLabels]="products" 
+            [chartSeries]="custProdCountSeries">
+        </app-bar-chart>
+
+        <div *ngIf="min_age && max_age" class="chart-card chart">
+            <app-area-chart #min_max_age style="width: 100%"></app-area-chart>
+        </div>
+    </div>
+    
+</div>

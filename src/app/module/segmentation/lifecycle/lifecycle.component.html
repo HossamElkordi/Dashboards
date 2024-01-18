@@ -1,0 +1,22 @@
+<div class="lifecycle-div">
+    <div class="slicer-and-table-div">
+        <app-num-slicer [slicers]="slicers" (selection)="handleSlicerChange($event)"></app-num-slicer>
+        <app-table class="table" *ngIf="tableData; else emptyTable" [columns]="columns" [dataSource]="tableData"
+            [(selectedRow)]="selectedClient" (selectedRowChange)="selectClient()"></app-table>
+    </div>
+    <div class="charts-div">
+        <div class="chart" *ngFor="let chart of displayedCharts">
+            <app-bar-chart *ngIf="filteredData$ | async; else emptyChart" [chartTitle]="chartsInfo[chart].title"
+                [chartLabels]="chartsInfo[chart].labels" [chartSeries]="[{name: chart, data: chartsInfo[chart].data}]"
+                chartWidth="100%" chartHeight="100%"></app-bar-chart>
+            <ng-template #emptyChart>
+                <app-bar-chart [chartTitle]="chartsInfo[chart].title" chartWidth="100%"
+                    chartHeight="100%"></app-bar-chart>
+            </ng-template>
+        </div>
+    </div>
+</div>
+
+<ng-template #emptyTable>
+    <app-table class="table" [columns]="columns"></app-table>
+</ng-template>

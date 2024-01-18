@@ -1,0 +1,8 @@
+<div class="list">
+    <li *ngFor="let item of items" class="list-item">
+      <mat-checkbox [(ngModel)]="item.checked"
+                    (ngModelChange)="onSelectionChange()">
+        {{item.title}}
+      </mat-checkbox>
+    </li>
+</div>

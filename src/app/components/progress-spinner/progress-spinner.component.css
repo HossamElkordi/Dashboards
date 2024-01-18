@@ -1,0 +1,7 @@
+.mat-mdc-progress-spinner.prog { 
+    --mdc-circular-progress-active-indicator-color: var(--blue); 
+}
+
+.mat-mdc-progress-bar.prog {
+    --mdc-linear-progress-active-indicator-color: var(--blue);
+}

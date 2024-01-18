@@ -1,0 +1,151 @@
+.client-details-div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 20px 0px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+::ng-deep .card-and-piechart-container .info-container {
+  text-align: left;
+}
+
+::ng-deep .card-and-piechart-container .card-container {
+  height: auto !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+::ng-deep .card-and-piechart-container app-pie-chart {
+  flex-grow: 1;
+}
+
+::ng-deep .card-and-piechart-container app-card {
+  display: flex;
+  flex-grow: 1;
+}
+
+::ng-deep .card-and-piechart-container apx-chart {
+  margin: 0;
+  display: block;
+}
+
+::ng-deep .card-and-piechart-container .apexcharts-svg {
+  display: block;
+}
+
+::ng-deep .card-and-piechart-container h2 {
+  margin: 0 !important;
+}
+
+::ng-deep .card-and-piechart-container .pie-chart-container {
+  margin: 0 !important;
+  padding: 10px !important;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+@media screen and (max-height: 650px) {
+  .events-and-barchart-container {
+    height: 160px;
+  }
+}
+
+@media screen and (min-height: 651px) {
+  .events-and-barchart-container {
+    min-height: 205px;
+    flex: 1 1 0;
+  }
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.card-container {
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+  max-width: 280px; /* Set a max-width for readability */
+  margin: 0;
+  transition: transform 0.2s, box-shadow 0.2s; /* For hover effect */
+  min-height: 30%;
+  height: auto;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.card-container:hover {
+  transform: translateY(-5px); /* Lift the card a bit on hover */
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-container h2 {
+  grid-column: 1 / -1;
+  font-size: 1.6em;
+  margin-bottom: 20px;
+  color: var(--blue); /* Darker color for better contrast */
+  font-weight: 600; /* Semi-bold title */
+  text-align: center;
+}
+
+::ng-deep .card-container .mat-mdc-checkbox label {
+  color: black;
+}
+
+::ng-deep .card-container .mdc-checkbox__background {
+  border-color: black !important;
+}
+
+app-bar-chart {
+  flex-grow: 1;
+}
+
+::ng-deep .events-and-barchart-container .bar-chart-container {
+  height: 100%;
+}
+
+::ng-deep .events-and-barchart-container apx-chart {
+  height: 100%;
+  width: 100%;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+::ng-deep .events-and-barchart-container .card-container .list {
+  text-align: left !important;
+  width: max-content !important;
+  padding-right: 20px;
+  overflow-y: auto;
+}
+
+::ng-deep .events-and-barchart-container apx-chart {
+  margin: 0 !important;
+}
+
+::ng-deep app-client-details .card-container h2 {
+  margin: 0 !important;
+}
+
+app-table {
+  min-height: 0;
+  flex: 1 1 0;
+}
+
+app-check-box {
+  min-height: 0;
+}
+
+::ng-deep .virtual-scroller .mat-mdc-checkbox label {
+  color: black;
+}
+
+::ng-deep .virtual-scroller .mdc-checkbox__background {
+  border-color: black !important;
+}

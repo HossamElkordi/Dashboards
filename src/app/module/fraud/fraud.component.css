@@ -1,0 +1,39 @@
+.body{
+    display: flex;
+}
+
+.table{
+    display: flex;
+    width: 30dvw;
+    overflow-y: auto;
+    height: 93vh;
+}
+
+.info-div{
+    display: flex;
+    flex-wrap: nowrap;
+    height: fit-content;
+    width: 70dvw;
+}
+
+.side-panel{
+    display: flex;
+    flex-direction: column;
+}
+
+.slider-div{
+    display: flex;
+    justify-content: space-evenly;
+
+    background-color: var(--white);
+    width: 70dvw;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 2px;
+}
+
+.slider-div:hover {
+    transform: translateY(-5px); /* Lift the card a bit on hover */
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.15);
+  }

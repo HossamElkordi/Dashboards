@@ -1,0 +1,51 @@
+<div class="loan-details-div">
+    <div class="flex-container two-cards-container">
+
+        <app-card class="card" title="Loan Details" [information]="loanInfo" [twoColumns]="true"></app-card>
+        <app-card class="card" #assetCard [twoColumns]="true"></app-card>
+        <!-- <div class="column-container">
+        
+    </div>
+    <app-card [information]="loanMoreInfo" class="more-info-card">
+        <app-slider #expensesSlider title="Expected Expenses %" [step]="0.01"
+            (changeValue)="getCurrRarocRorac()"></app-slider>
+        <app-slider #rocSlider title="Expected ROC %" [step]="0.01" (changeValue)="getCurrRarocRorac()"></app-slider>
+    </app-card> -->
+    </div>
+
+    <div class="card-container flex-container more-info-card-container">
+        <div class="more-info-card"> <!-- new wrapper div -->
+            <div *ngFor="let info of loanMoreInfo" class="info-row">
+                <span class="info-name">{{ info.name }}</span>
+                <span class="info-value">{{ info.value }}</span>
+            </div>
+        </div>
+        <div class="sliders column-container">
+            <app-slider #expensesSlider title=" Expected Expenses %" [step]="0.01" (changeValue)="getCurrRarocRorac()">
+            </app-slider>
+            <app-slider id="roc-slider" #rocSlider title="Expected ROC %" [step]="0.01"
+                (changeValue)="getCurrRarocRorac()"></app-slider>
+        </div>
+    </div>
+
+    <div class="flex-container charts-container">
+        <div class="chart card-container">
+            <h2>Asset Price Over Time</h2>
+            <app-area-chart #assetPriceChart></app-area-chart>
+        </div>
+
+        <div class="chart card-container">
+            <h2>PD Evaluation</h2>
+            <app-area-chart #pdEvalChart></app-area-chart>
+            <div class="flex-container button-group">
+                <button class="btn" mat-raised-button [disabled]="selectedEvaluation === 'ECL'"
+                    (click)="updateEvaluationChart('ECL')">ECL</button>
+                <button class="btn" mat-raised-button [disabled]="selectedEvaluation === 'PIT'"
+                    (click)="updateEvaluationChart('PIT')">PIT
+                    PD</button>
+                <button class="btn" mat-raised-button [disabled]="selectedEvaluation === 'lifetime'"
+                    (click)="updateEvaluationChart('lifetime')">Lifetime PD</button>
+            </div>
+        </div>
+    </div>
+</div>
